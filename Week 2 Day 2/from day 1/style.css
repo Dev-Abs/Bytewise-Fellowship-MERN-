@@ -1,0 +1,185 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #f1f1f1;
+}
+
+.byte-1{
+    display: none;
+}
+
+.container{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+.container h1,h3{
+    font-size: 2rem;
+    margin: 20px 0;
+    color: #333;
+}
+.container nav ul{
+    list-style: none;
+    justify-content: center;
+    margin: 20px 0;
+}  
+.container nav ul li{
+    margin: 15px 10px;
+}
+.container nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+    background-color:  #333;
+}
+
+section{
+    justify-content: center;
+    align-items: center;
+    height: 230px;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    margin: 20px auto;
+}
+h2{
+    font-size: 1.5rem;
+    margin: 0px 10px;
+    padding: 10px;
+
+}
+
+footer p{
+    text-align: center;
+    margin: 20px 0;
+    color: #333;
+    width: 50%;
+    margin: 40px auto;
+}
+form textarea{
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #333;
+    resize: none;
+}
+
+.table{
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+.table th{
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+.table td{
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+section p{
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.btn{
+    padding: 10px 20px;
+    border: none;
+    background-color: #fff;
+    color: #333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 7px 5px;
+}
+
+#contact{
+    height: 360px;
+}
+
+.form{
+    width: 70%;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    height: 250px;
+}
+
+
+.form input{
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+.form label{
+    margin: 2px 0;
+    color: #333;
+    display: block;
+}
+.form input[type="submit"]{
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#services ul{
+    margin: 20px 30px;
+    list-style: none;
+}
+
+@media screen and (min-width: 768px){
+    .byte-1{
+        display: block;
+        width: 100%;
+    }
+    .container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    .container nav ul{
+        display: flex;
+    }
+    .container nav ul li{
+        margin: 0 10px;
+    }
+    .container nav ul li a{
+        padding: 5px 10px;
+    }
+    section{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .form{
+        width: 50%;
+    }
+    #services ul{
+        display: flex;
+        justify-content: center;
+    }
+    #services ul li{
+        margin: 0 10px;
+    }
+    
+}

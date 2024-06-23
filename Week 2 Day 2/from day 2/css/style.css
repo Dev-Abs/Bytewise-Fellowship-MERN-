@@ -1,0 +1,355 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #f4f4f4;
+    color: #555555;
+    font: normal 16px Arial, Helvetica, sans-serif;
+    line-height: 1.6em;    
+}
+
+.container{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.box-1 h1,.box-2 h1{
+    font-family: Tahoma;
+    font-weight: 800;
+    font-style: italic;
+    text-decoration: underline;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    word-spacing: 1em ;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.box-1 p, .box-2 p{
+    font-size: 18px;
+    font-weight: 400;
+    text-align: justify;
+    margin-bottom: 10px;
+    color: #fff;
+    background-color: #555;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.box-2 a{
+    text-decoration: none;
+    color: #fff;
+    background-color: #555;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.catagories h2{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.catagories ul{
+    list-style: none;
+    padding: 0px;
+    padding-left: 10px;
+}
+
+.catagories ul li{
+    padding-bottom: 6px;
+    border-bottom: dotted 1px #333;
+}
+ .catagories ul li a{
+    text-decoration: none;
+    color: #000;
+ }
+
+
+.my-form{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.form-group{
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    display: block;
+    font-weight: bold;
+}
+.form-group input[type="text"], .form-group input[type="email"], .form-group input[type="password"], .form-group textarea{
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    width: 20%;
+}
+
+#container-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.block{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+.p-box{
+    width: 100%;
+    height: 500px;
+    border: 1px solid #ccc;
+    margin-top: 30px;
+    position: relative;
+    background-image: url(../images/bgimg.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
+    background-color: #000;
+}
+
+.my-list{
+    list-style: none;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 20px;
+}
+.my-list li{
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 5px;
+    background-color: #aaa;
+}
+
+#table-label{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.footer {
+    background-color: #aaa;
+    padding: 20px;
+    text-align: center;
+    flex: 1 100%;
+    margin-top: 20px;
+}
+
+
+
+@media screen and (min-width: 768px){
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+a:hover{
+    color: red;
+}
+a:active{
+    color: blue;
+}
+/* a:visited{
+    color: black;
+} */
+.container{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}  
+.clr{
+    clear: both;
+}
+.button{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.box-1{
+    background-color: #333;
+    color: #fff;
+    border: 5px solid #555;
+    border-width: 5px 5px 5px 5px;
+    border-top-style: dotted;
+    padding: 10px;
+    margin: 10px;
+}
+
+.box-1 h1{
+    font-family: Tahoma;
+    font-weight: 800;
+    font-style: italic;
+    text-decoration: underline;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    word-spacing: 1em ;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+.box-2{
+    border: 5px dotted #ccc;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.catagories{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+.catagories h2{
+    text-align: center;
+}
+
+.catagories ul{
+    list-style: none;
+    padding: 0px;
+    padding-left: 10px;
+}
+.catagories ul li{
+    padding-bottom: 6px;
+    border-bottom: dotted 1px #333;
+    /* list-style-image: url(../images/check.jpg); */
+}
+
+.my-form{
+    padding: 20px;
+}
+.my-form .form-group{
+    padding-bottom: 15px;
+}
+.my-form label{
+    display: block;
+    font-weight: bold;
+}
+.my-form input[type="text"], .my-form input[type="email"], .my-form input[type="password"], .my-form textarea{
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#container-2{
+    display: block;
+}
+
+.block{
+    float: left;
+    width: 33.3%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+#main-block{
+    float: left;
+    width: 70%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+#sidebar{
+    float: right;
+    width: 30%;
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.p-box{
+    width: 800px;
+    height: 500px;
+    border: 1px solid #ccc;
+    margin-top: 30px;
+    position: relative;
+    background-image: url(../images/bgimg.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.p-box h1{
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.p-box h2{
+    position: absolute;
+    bottom: 50px;
+    right: 400px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.fix-me{
+    position: fixed;
+    width: 3%;
+    top: 100px;
+    left: 10px;
+}
+.my-list{
+    list-style: none;
+    padding: 0px;
+    margin-top: 20px;
+}
+
+.my-list li:first-child{
+   background-color: red;
+}
+.my-list li:last-child{
+    background-color: green;
+}
+
+.my-list li:nth-child(even){
+    background-color: yellow;
+}
+.my-list li:nth-child(5){
+    background-color: blue;
+}
+
+.footer {
+    background-color: #aaa;
+    padding: 20px;
+    text-align: center;
+    flex: 1 100%;
+    margin-top: 20px;
+}
+
+}
