@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f00;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 40%;
+  margin: 0 auto;
+}
+.main .main-paragraph1, .main .main-paragraph2 {
+  font-weight: 700;
+}
+.main .main-paragraph1:hover, .main .main-paragraph2:hover {
+  color: pink;
+}
+.main .main-paragraph2:hover {
+  color: #3c6c0a;
+}
+@media (max-width: 800px) {
+  .main {
+    flex-direction: row;
+  }
+}
+
+.light {
+  background: white;
+  color: black;
+}/*# sourceMappingURL=main.css.map */
