@@ -20,6 +20,7 @@ The repository is structured to reflect my day-to-day progress. Each folder corr
 | Mastering CSS Grid and Flexbox | 2 | 1 | Completed | [Link to Task](./Week%202%20Day%201) |
 | Creating a Responsive Website | 2 | 2 | Completed | [Link to Task](./Week%202%20Day%202) |
 | Landing Page (Practice) | 2 | 3 | Completed | [Link to Task](./Week%202%20Day%203) |
+| Learn SASS| 3 | 1 | Completed | [Link to Task](./Week%203/Day%201) |
 
 ...
 
