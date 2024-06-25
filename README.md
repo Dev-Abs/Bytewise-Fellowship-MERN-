@@ -16,11 +16,12 @@ The repository is structured to reflect my day-to-day progress. Each folder corr
 |------|------|-----|--------|------------|
 | HTML Basics | 1 | 1 | Completed | [Link to Task](./Day%201) |
 | Basics of CSS | 1 | 2 | Completed | [Link to Task](./Day%202) |
-| Styling best practices, CSS Properties, Basics of Git and GitHub | 1 | 3 | Completed | [Link to Task](./Day%203,4,5) |
+| Styling best practices, CSS Properties, Basics of Git and GitHub | 1 | 3,4,5 | Completed | [Link to Task](./Day%203,4,5) |
 | Mastering CSS Grid and Flexbox | 2 | 1 | Completed | [Link to Task](./Week%202%20Day%201) |
 | Creating a Responsive Website | 2 | 2 | Completed | [Link to Task](./Week%202%20Day%202) |
 | Landing Page (Practice) | 2 | 3 | Completed | [Link to Task](./Week%202%20Day%203) |
 | Learn SASS| 3 | 1 | Completed | [Link to Task](./Week%203/Day%201) |
+| Learn Tailwind CSS | 3 | 2,3 | Completed | [Link to Task](./Week%203/Day2-3) |
 
 ...
 
