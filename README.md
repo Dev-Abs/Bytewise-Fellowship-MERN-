@@ -22,6 +22,7 @@ The repository is structured to reflect my day-to-day progress. Each folder corr
 | Landing Page (Practice) | 2 | 3 | Completed | [Link to Task](./Week%202/Day%203) |
 | Learn SASS| 3 | 1 | Completed | [Link to Task](./Week%203/Day%201) |
 | Learn Tailwind CSS | 3 | 2,3 | Completed | [Link to Task](./Week%203/Day2-3) |
+| Practice Project (Tailwind CSS + Responsive) | 3 | 4,5 | Completed | [Link to Task](./Week%203/Day4-5) |
 
 ...
 
