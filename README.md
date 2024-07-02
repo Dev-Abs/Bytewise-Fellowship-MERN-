@@ -24,6 +24,7 @@ The repository is structured to reflect my day-to-day progress. Each folder corr
 | Learn Tailwind CSS | 3 | 2,3 | Completed | [Link to Task](./Week%203/Day2-3) |
 | Practice Projects (Tailwind CSS + Responsive) | 3 | 4,5 | Completed | [Link to Task](./Week%203/Day4-5) |
 | JavaScript Basics | 4 | 1 | Completed | [Link to Task](./Week%204/Day%201/) |
+| JavaScript DOM Manipulation | 4 | 2 | Completed | [Link to Task](./Week%204/Day%202/) |
 
 ...
 
