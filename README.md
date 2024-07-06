@@ -27,6 +27,7 @@ The repository is structured to reflect my day-to-day progress. Each folder corr
 | JavaScript DOM Manipulation | 4 | 2 | Completed | [Link to Task](./Week%204/Day%202/) |
 | Asynchronous JavaScript | 4 | 3 | Completed | [Link to Task](./Week%204/Day%203/) |
 | JavaScript Functions | 4 | 4 | Completed | [Link to Task](./Week%204/Day%204/) |
+| To Do App Project| 4 | 5 | Completed | [Link to Task](./Week%204/Day%205/) |
 
 ...
 
