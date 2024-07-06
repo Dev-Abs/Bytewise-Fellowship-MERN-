@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <script
+      src="https://kit.fontawesome.com/7f7430db98.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Todo app</title>
+  </head>
+  <body>
+    <div id="header" class="header">
+      <div class="one">
+        <h1>TODO</h1>
+        <img id="toggle" class="sun image" src="images/icon-sun.svg" alt="" />
+      </div>
+
+      <div class="input">
+        <i id="enter" class="fa-regular fa-circle" alt="enter"></i>
+        <input id="entertext" value="" type="text" placeholder="Create a new todo..." />
+      </div>
+    </div>
+
+    <div class="note-div">
+      <div class="notes">
+      </div>
+
+      <div class="clear">
+        <div id="left">
+          <p></p>
+        </div>
+        <div id="right">
+          <p>Clear Completed</p>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="all">
+          <p>All</p>
+        </div>
+        <div class="active">
+          <p>Active</p>
+        </div>
+        <div class="completed">
+          <p>Completed</p>
+        </div>
+      </div>
+
+      <div class="end">
+        <p>Drag and drop to reorder list</p>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
