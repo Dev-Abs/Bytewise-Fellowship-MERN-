@@ -1,0 +1,70 @@
+
+nodemon?
+npm install -g nodemon
+
+function of nodemon?
+nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
+
+
+what does npm init does?
+npm init is a way to set up a new or existing npm package. It will ask you a bunch of questions, and then write a package.json for you.
+npm init -y
+
+date-fns
+npm install date-fns
+explain date-fns
+date-fns provides the most comprehensive, yet simple and consistent toolset for manipulating JavaScript dates in a browser & Node.js.
+
+if one would to clone a project from github, it has a package.json file, and not the node_modules folder, what should one do?
+npm install , it will install all the dependencies in the package.json file
+
+npm i nodemon -D, why we do this
+-D flag is used to save the package as a devDependency. This means that the package is only needed during development, and not during runtime.
+
+scripts in package.json, what is it for?
+The "scripts" property of your package.json file is a way to define a set of node scripts that you can run using npm. This can be useful for a variety of things, such as running tests, setting up your development environment, or running your application.
+example:
+"scripts": {
+    "start": "node index.js",
+    "test": "mocha"
+  }
+
+
+uuid package, what is it for?
+npm install uuid
+UUID (Universally Unique Identifier) is a 128-bit number used to uniquely identify some object or entity on the Internet.
+why and how we use it?
+const { v4: uuidv4 } = require('uuid');
+console.log(uuidv4());
+1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4c1d
+
+^10.0.0 in package.json, what does it mean?
+1st number mean? major version, it will update the major version
+2nd number mean? minor version, it will update the minor version
+3rd number mean? patch version, it will update the patch version
+^ means it will update the major version, but not the minor and patch version
+~ means it will update the major and minor version, but not the patch version
+* means it will update all the version
+
+if i want to install specific version of a package, how do i do it?
+npm install package@version
+npm install lodash@4.17.21
+
+npm update, what does it do?
+npm update will update all the packages in the package.json file
+
+npm outdated, what does it do?
+npm outdated will show all the outdated packages in the package.json file
+
+npm uninstall, what does it do?
+npm uninstall package_name
+npm uninstall lodash
+
+npm rm, what does it do?, what is the difference between npm uninstall and npm rm?
+npm rm package_name
+npm rm lodash
+
+
+
+
+
