@@ -43,6 +43,25 @@ const server = http.createServer((req, res) => {
 
   myEmitter.emit('log', `Request URL: ${req.url}, Request Method: ${req.method}`, 'reqLog.txt');
 
+
+    // if (req.url === '/' || req.url === 'index.html') {
+  //     res.statusCode = 200;
+  //     res.setHeader('Content-Type', 'text/html');
+  //     filePath.join(__dirname, 'views' , 'index.html');
+  //     fs.readFile(filePath.join(__dirname, 'views' , 'index.html'), (err, data) => {
+  //         res.end(data);
+  //     });
+  // }
+
+  // switch (req.url) {
+  //     case '/':
+  //         res.statusCode = 200;
+  //         res.setHeader('Content-Type', 'text/html');
+  //         fs.readFile(path.join(__dirname, 'views', 'index.html'), (err, data) => {
+  //             res.end(data);
+  //         });
+  //         break;
+  //     }
   const extension = path.extname(req.url);
 
   let contentType;
@@ -141,25 +160,6 @@ const server = http.createServer((req, res) => {
         }
     }
 
-
-  // if (req.url === '/' || req.url === 'index.html') {
-  //     res.statusCode = 200;
-  //     res.setHeader('Content-Type', 'text/html');
-  //     filePath.join(__dirname, 'views' , 'index.html');
-  //     fs.readFile(filePath.join(__dirname, 'views' , 'index.html'), (err, data) => {
-  //         res.end(data);
-  //     });
-  // }
-
-  // switch (req.url) {
-  //     case '/':
-  //         res.statusCode = 200;
-  //         res.setHeader('Content-Type', 'text/html');
-  //         fs.readFile(path.join(__dirname, 'views', 'index.html'), (err, data) => {
-  //             res.end(data);
-  //         });
-  //         break;
-  //     }
 });
 
 // not ready to launch server yet, becuase it should listen first
