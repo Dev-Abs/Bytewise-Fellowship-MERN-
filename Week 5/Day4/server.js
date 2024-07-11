@@ -7,29 +7,42 @@
 //  7- nodejs uses process object - not document object
 //  8- nodejs uses buffer object - not ArrayBuffer object
 // 9- has common core modules that we will explore
+//  10- missing some JS API like DOM, fetch, localstorage, etc
+
 
 
 const os = require('os');
 const path = require('path');
 
+// const math = require('./math');
+// console.log(math.add(1, 2));
 
-console.log(os.type());
-console.log(os.version());
-console.log(os.platform());
-console.log(os.hostname());
-console.log(os.homedir());
+const { add, subtract, multiply, divide } = require('./math');
+console.log(add(1, 2));
+console.log(subtract(1, 2));
+console.log(multiply(1, 2));
+console.log(divide(1, 2));
+
+
+
+
+// console.log(os.type());
+// console.log(os.version());
+// console.log(os.platform());
+// console.log(os.hostname());
+// console.log(os.homedir());
 // console.log(os.cpus());
 // console.log(os.freemem());
 // console.log(os.totalmem());
 // console.log(os.uptime());
 // console.log(os.userInfo());
 
-console.log(__dirname);
-console.log(__filename);
+// console.log(__dirname);
+// console.log(__filename);
 
-console.log(path.dirname(__filename));
-console.log(path.basename(__filename));
-console.log(path.extname(__filename));
+// console.log(path.dirname(__filename));
+// console.log(path.basename(__filename));
+// console.log(path.extname(__filename));
 
 
-console.log(path.parse(__filename));
+// console.log(path.parse(__filename));
