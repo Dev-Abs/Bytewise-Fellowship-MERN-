@@ -107,9 +107,9 @@ const server = http.createServer((req, res) => {
         // if content type is text/html then it will return req.url
 
     // doing using if else
-    if (contentType === 'text/html' && req.url === '/') {
+    if (contentType === 'text/html' && req.url === '/') { // if content type is text/html and req.url is / then it will return index.html
         filePath = path.join(__dirname, 'views', 'index.html');
-    } else if (contentType === 'text/html' && req.url.slice(-1) === '/') {
+    } else if (contentType === 'text/html' && req.url.slice(-1) === '/') { // if content type is text/html and req.url ends with / then it will return index.html
         filePath = path.join(__dirname, 'views', req.url, 'index.html');
     } else if (contentType === 'text/html') {
         filePath = path.join(__dirname, 'views', req.url);
@@ -123,7 +123,7 @@ const server = http.createServer((req, res) => {
 
     // makes .html extension not required in the browser
 
-    if (!extension && req.url !== '/') filePath += '.html';
+    if (!extension && req.url !== '/') filePath += '.html'; // if extension is not there and url is not / then add .html extension
 
 
     const fileExists = fs.existsSync(filePath);
