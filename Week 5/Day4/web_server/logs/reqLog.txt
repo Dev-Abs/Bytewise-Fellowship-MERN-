@@ -1,0 +1,14 @@
+2024-07-12	00:54:36	ba9f1f25-d097-4035-9020-d2604f0cd148	Request URL: /new-page.html, Request Method: GET
+2024-07-12	00:54:36	8a9c58e0-81d9-42be-96c4-e8405d653067	Request URL: /css/style.css, Request Method: GET
+2024-07-12	00:54:36	1487a4ce-32ae-4156-8b8c-9664b34714b3	Request URL: /img/img1.jpg, Request Method: GET
+2024-07-12	00:55:23	cb200eac-88f2-4dd6-bf77-577749d968f3	Request URL: /new-page.html, Request Method: GET
+2024-07-12	00:56:28	2e26ccba-e195-4e5a-8995-4027b690c46b	Request URL: /new-page.html, Request Method: GET
+2024-07-12	00:56:31	f4f3b6db-22f9-4116-80f0-bca530573adf	Request URL: /new-page.html, Request Method: GET
+2024-07-12	00:57:21	5ef25628-fada-4991-8207-cf3f157abd6a	Request URL: /new-page.html, Request Method: GET
+2024-07-12	00:57:33	ed67ef9e-f9cd-400f-9467-cec1c58867cc	Request URL: /new-page.html, Request Method: GET
+2024-07-12	00:57:51	8aca3d3a-e77f-4a07-952e-6708b7b3d6a6	Request URL: /data/data.json, Request Method: GET
+2024-07-12	01:00:16	334fd06f-025c-430d-a423-8381412b6381	Request URL: /data/data.json, Request Method: GET
+2024-07-12	01:00:37	8b085909-9c34-431b-aeff-ba0c023cfe7b	Request URL: /data/data.json, Request Method: GET
+2024-07-12	01:01:09	c7d360b5-3591-4493-bcee-b8c047658574	Request URL: /data/data.json, Request Method: GET
+2024-07-12	01:01:45	87c16f7f-acfd-4b84-a0ac-92b1ecb2b4e0	Request URL: /index, Request Method: GET
+2024-07-12	01:01:45	bb96efae-0682-4b17-9fa6-ac6afd8726a6	Request URL: /css/style.css, Request Method: GET
