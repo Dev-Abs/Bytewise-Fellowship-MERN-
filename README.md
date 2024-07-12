@@ -30,6 +30,7 @@ The repository is structured to reflect my day-to-day progress. Each folder corr
 | To Do App Project| 4 | 5 | Completed | [Link to Task](./Week%204/Day%205/) |
 | Fundamentals of React | 5 | 1-2-3 | Completed | [Link to Task](./Week%205/Day%201-2-3/) |
 | NodeJs | 5 | 4 | Completed | [Link to Task](./Week%205/Day4/) |
+| Practice Project | 5 | 5 | Completed | [Link to Task](./Week%205/Day5/) |
 
 ...
 
