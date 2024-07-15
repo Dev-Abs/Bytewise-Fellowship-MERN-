@@ -1,26 +1,24 @@
 const asyncHandler = require('express-async-handler')
-
+const Goal = require('../models/goalModel')
 // @desc: Get Goals
 // @route: GET /api/goals
 // @access: Private
 const getGoals = asyncHandler( async (req, res) => { //using async, before getting into the database, becuase it will take some time to get the data
-    res.status(200).json({
-        message: 'Get Goals'
-    })
+    const goals = await Goal.find({}) //find all the goals    
+        res.status(200).json(goals) //send the goals in json format
 })
 
 // @desc: Post Goals
 // @route: POST /api/goals
 // @access: Private
 const postGoals = asyncHandler (async (req, res) => {
-    if (!req.body.title) {
+    if (!req.body.text) {
         res.status(400)
-        throw new Error('Please fill the title')
+        throw new Error('Please add text field')
     }
-
-    res.status(200).json({
-        message: 'Post Goals'
-    })
+    const goal = new Goal({text: req.body.text})
+    const createdGoal = await goal.save()
+    res.status(200).json(createdGoal)
 })
 
 // @desc: Put Goals by ID
