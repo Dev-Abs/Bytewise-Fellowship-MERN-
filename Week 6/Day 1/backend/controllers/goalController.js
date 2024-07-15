@@ -25,9 +25,17 @@ const postGoals = asyncHandler (async (req, res) => {
 // @route: PUT /api/goals/:id
 // @access: Private
 const putGoals = asyncHandler (async (req, res) => {
-    res.status(200).json({
-        message: `Put Goals by ID ${req.params.id}`
+    const goal = await Goal.findById(req.params.id)
+    if (!goal) {
+        res.status(400)
+        throw new Error('Goal not found')
+    }
+
+    const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+        runValidators: true
     })
+    res.status(200).json(updatedGoal)
 })
 
 // @desc: Delete Goals by ID
