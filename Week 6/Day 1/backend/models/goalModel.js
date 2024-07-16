@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const goalSchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User' // this is a reference to the User model
+    },
     text: {
         type: String,
         required: [true, 'Please add some text']
