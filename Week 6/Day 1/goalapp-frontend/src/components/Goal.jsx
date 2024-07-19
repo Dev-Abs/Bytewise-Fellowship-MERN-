@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from 'react-router-dom'
 const Goal = (props) => {
   return (
     <>
@@ -19,13 +19,15 @@ const Goal = (props) => {
           Remove
         </button>
         {/* Update Goal */}
+        <Link to='/updategoal' className="w-1/2">
         <button 
-        className="w-1/2 py-3 bg-blue-600 text-white rounded hover:bg-blue-500 m-2"
+        className="w-full py-3 bg-blue-600 text-white rounded hover:bg-blue-500 m-2"
         // on click update goal, pass the goal id, 
         onClick={() => props.updateGoalCall(props.goal.id)}
         >
           Update
         </button>
+        </Link>
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 const Navbar = () => {
   return (
     <>
@@ -11,9 +11,11 @@ const Navbar = () => {
                 </svg>
             </div>
             <div className="pr-8 md:block hidden">
-                <a href="/" className="p-4">Home</a>
-                <a href="/about" className="p-4">About</a>
-                <a href="/contact" className="p-4">Contact</a>
+                {/* <a href="/" className="p-4">Home</a> */}
+                <Link to="/allgoals" className="p-4">All Goals</Link>
+                <Link to="/creategoal" className="p-4">Create New Goal</Link>
+                <Link to="/signup" className="p-4">Signup</Link>
+                <Link to="/login" className="p-4">LogIn</Link>
             </div>
         </nav>
     </>
