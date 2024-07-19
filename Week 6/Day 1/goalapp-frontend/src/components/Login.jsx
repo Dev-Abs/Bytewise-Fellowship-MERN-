@@ -1,13 +1,12 @@
 import React, {useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('handle submit')
     const response = await fetch("http://localhost:5000/api/users/login", {
       method: "POST",
       headers: {
@@ -21,6 +20,7 @@ const Login = () => {
     const json = await response.json();
     if (response.status === 200) {
       localStorage.setItem("token", json.token);
+      props.toggleNavbar()
       navigate("/creategoal");
     }
   };

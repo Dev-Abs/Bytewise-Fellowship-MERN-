@@ -6,7 +6,6 @@ const Goal = (props) => {
   
   const removeGoal = async (e) => {
     // e.preventDefault();
-    console.log('id in remove', props.goal._id)
     let token = localStorage.getItem('token');
     if(!token){
       navigate('/login')

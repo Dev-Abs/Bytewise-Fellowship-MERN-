@@ -20,12 +20,11 @@ const AllGoals = (props) => {
 
     const json = await response.json()
     props.setGoals(json)
-    console.log('all goals json', json)
   }
   getGoals()
   }, [])
   return (
-      <div className=' flex justify-center items-center flex-col bg-gray-200 w-full pt-[10%]'>
+      <div className=' flex justify-center items-center flex-col w-full pt-[10%]'>
         <div className='w-[50%] flex justify-center items-center flex-col bg-white  shadow-2xl'>
         <h1 className='text-3xl font-bold mb-10 text-gray-800 self-start w-1/3 p-6'>All Goals</h1>
 {      props.goals.length > 0 ?

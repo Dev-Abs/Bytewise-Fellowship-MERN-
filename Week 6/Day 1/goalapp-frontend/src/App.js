@@ -11,6 +11,7 @@ import Home from "./components/Home";
 const App = () => {
   const [goals, setGoals] = useState([]);
   const [id, setID] = useState('')
+  const [navbarMain, setNavbarMain ] = useState(true)
 
   const [updatedGoal, setUpdatedGoal] = useState({
     id: null,
@@ -29,7 +30,6 @@ const App = () => {
   };
 
   const updateGoalCall = (id) => {
-    console.log('id', id, typeof(id))
     setID(id)
     // const goal = goals.find((goal) => goal.id === id);
     // setUpdatedGoal({
@@ -48,12 +48,14 @@ const App = () => {
     //   )
     
   };
-
+  const toggleNavbar = () =>{
+    setNavbarMain(!navbarMain)
+  }
   return (
     <Router>
-      <Navbar />
+      <Navbar navbarMain={navbarMain} toggleNavbar={toggleNavbar} />
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login toggleNavbar={toggleNavbar} />} />
 
         <Route path="/signup" element={<Signup />} />
         <Route

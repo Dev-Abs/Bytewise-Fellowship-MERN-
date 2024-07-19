@@ -1,10 +1,15 @@
-import React,{useState} from "react";
-import { Link } from 'react-router-dom'
+import React,{useEffect, useState} from "react";
+import { Link, useNavigate } from 'react-router-dom'
 const CreateGoal = (props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  let navigate = useNavigate();
 
-
+  useEffect(()=>{
+    if(!localStorage.getItem("token")){
+      navigate('/login')
+    }
+  })
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +29,6 @@ const CreateGoal = (props) => {
         // description: description,
       }),
     });
-    console.log(response)
     if (response.status === 200) {
       alert('Goal Created')
       setTitle("");
