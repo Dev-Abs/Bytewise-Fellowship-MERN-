@@ -10,6 +10,7 @@ import Home from "./components/Home";
 
 const App = () => {
   const [goals, setGoals] = useState([]);
+  const [id, setID] = useState('')
 
   const [updatedGoal, setUpdatedGoal] = useState({
     id: null,
@@ -28,67 +29,51 @@ const App = () => {
   };
 
   const updateGoalCall = (id) => {
-    const goal = goals.find((goal) => goal.id === id);
-    setUpdatedGoal({
-      id: goal.id,
-      title: goal.title,
-      description: goal.description,
-    });
+    console.log('id', id, typeof(id))
+    setID(id)
+    // const goal = goals.find((goal) => goal.id === id);
+    // setUpdatedGoal({
+    //   id: goal.id,
+    //   title: goal.title,
+    //   description: goal.description,
+    // });
     // console.log(updatedGoal)
     // setGoals(goals.map((goal) => (goal.id === id ? updatedGoal : goal)))
   };
 
   const updateGoal = (updatedGoalFinal) => {
-    setGoals(
-      goals.map((goal) =>
-        goal.id === updatedGoalFinal.id ? updatedGoalFinal : goal
-      )
-    );
+    // setGoals(
+    //   goals.map((goal) =>
+    //     goal.id === updatedGoalFinal.id ? updatedGoalFinal : goal
+    //   )
+    
   };
 
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route 
-        path="/login" 
-        element={
-        <Login />
-        }
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/allgoals"
+          element={
+            <AllGoals
+              goals={goals}
+              removeGoal={removeGoal}
+              updateGoalCall={updateGoalCall}
+              setGoals={setGoals}
+            />
+          }
         />
 
-<Route 
-        path="/signup" 
-        element={
-        <Signup />
-        }
-          />
-                  <Route 
-                  path="/allgoals" 
-                  element={
-                    <AllGoals
-                    goals={goals}
-                    removeGoal={removeGoal}
-                    updateGoalCall={updateGoalCall}
-                    setGoals={setGoals}
-                  />
-                  }
-                  />
+        <Route path="/creategoal" element={<CreateGoal addGoal={addGoal} />} />
 
-          <Route
-          path="/creategoal"
-          element= {
-            <CreateGoal addGoal={addGoal} />
-          } 
-          />
-
-          <Route 
+        <Route
           path="/updategoal"
-          element={
-            <UpdateGoal goal={updatedGoal} updateGoal={updateGoal} />
-          }
-          />
-    
+          element={<UpdateGoal id={id} goal={updatedGoal} updateGoal={updateGoal} />}
+        />
       </Routes>
     </Router>
   );

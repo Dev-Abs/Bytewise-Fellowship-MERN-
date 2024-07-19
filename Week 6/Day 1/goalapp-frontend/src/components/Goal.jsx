@@ -1,6 +1,32 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 const Goal = (props) => {
+
+  const navigate = useNavigate();
+  
+  const removeGoal = async (e) => {
+    // e.preventDefault();
+    console.log('id in remove', props.goal._id)
+    let token = localStorage.getItem('token');
+    if(!token){
+      navigate('/login')
+    }
+
+    const response = await fetch (`http://localhost:5000/api/goals/${props.goal._id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': `Bearer ${token}`
+      }
+    })
+
+    if(response.status === 200) {
+      alert('Goal deleted')
+    }
+    else{
+      alert('some error occured!!')
+    }
+  }
   return (
     <>
       {/* display goals in one card */}
@@ -14,7 +40,7 @@ const Goal = (props) => {
         </div>
         <button 
         className="w-1/2 py-3 bg-red-600 text-white rounded hover:bg-red-500 m-2"
-        onClick={() => props.removeGoal(props.goal.id)}
+        onClick={() => removeGoal()}
         >
           Remove
         </button>
@@ -23,7 +49,7 @@ const Goal = (props) => {
         <button 
         className="w-full py-3 bg-blue-600 text-white rounded hover:bg-blue-500 m-2"
         // on click update goal, pass the goal id, 
-        onClick={() => props.updateGoalCall(props.goal.id)}
+        onClick={() => props.updateGoalCall(props.goal._id)}
         >
           Update
         </button>
