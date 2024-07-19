@@ -4,15 +4,38 @@ const CreateGoal = (props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const onSubmit = (e) => {
+
+
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (!title || !description) {
       alert("Please enter goal and description");
       return;
     }
-    props.addGoal({ title, description });
-    setTitle("");
-    setDescription("");
+
+    const response = await fetch("http://localhost:5000/api/goals", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        'authorization': `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        text: title,
+        // description: description,
+      }),
+    });
+    console.log(response)
+    if (response.status === 200) {
+      alert('Goal Created')
+      setTitle("");
+      setDescription("");
+    }
+    else{
+      alert('Error')
+    }
+    // props.addGoal({ title, description });
+    // setTitle("");
+    // setDescription("");
   };
   return (
     <>

@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 const UpdateGoal = (props) => {
-    const [description, setDescription] = React.useState('')
-    const [title, setTitle] = React.useState('')
+    const [description, setDescription] = useState('')
+    const [title, setTitle] = useState('')
+    
     // const [id,setID] = React.useState(props.goal.id)
     const id = props.goal.id
     const onSubmit = (e) => {
