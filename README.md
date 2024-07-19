@@ -31,7 +31,7 @@ The repository is structured to reflect my day-to-day progress. Each folder corr
 | Fundamentals of React | 5 | 1-2-3 | Completed | [Link to Task](./Week%205/Day%201-2-3/) |
 | NodeJs | 5 | 4 | Completed | [Link to Task](./Week%205/Day4/) |
 | Practice Project | 5 | 5 | Completed | [Link to Task](./Week%205/Day5/) |
-| ExpressJS + JWT auth| 6 | 1 | Completed | [Link to Task](./Week%206/Day%201/) |
+| ExpressJS + JWT auth - MERN GoalsApp| 6 | 1-4-5 | Completed | [Link to Task](./Week%206/Day%201/) |
 
 ...
 
