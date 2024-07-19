@@ -1,7 +1,29 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Goal from './Goal'
+import { useNavigate } from 'react-router-dom'
 
 const AllGoals = (props) => {
+  let navigate = useNavigate();
+  useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      navigate('/login')
+    }
+    const getGoals = async () => {
+    let token = localStorage.getItem('token')
+    const response = await fetch('http://localhost:5000/api/goals', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': `Bearer ${token}`
+      }
+    })
+
+    const json = await response.json()
+    props.setGoals(json)
+    console.log('all goals json', json)
+  }
+  getGoals()
+  }, [])
   return (
       <div className=' flex justify-center items-center flex-col bg-gray-200 w-full pt-[10%]'>
         <div className='w-[50%] flex justify-center items-center flex-col bg-white  shadow-2xl'>

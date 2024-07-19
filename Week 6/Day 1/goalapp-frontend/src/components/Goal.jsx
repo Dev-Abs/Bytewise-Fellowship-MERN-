@@ -7,7 +7,7 @@ const Goal = (props) => {
       <div className="flex justify-center items-center  p-6 mt-[-45px] w-4/5">
         <div className="my-[20px] w-full">
           <h2 className="text-xl font-bold mb-2 text-gray-800">
-            {props.goal.title}
+            {props.goal.text}
           </h2>
           <p className="text-600 text-gray-800">{props.goal.description}</p>
           {/* remove button */}

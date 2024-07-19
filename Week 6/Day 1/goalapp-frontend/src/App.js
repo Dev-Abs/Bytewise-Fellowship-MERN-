@@ -9,20 +9,7 @@ import UpdateGoal from "./components/UpdateGoal";
 import Home from "./components/Home";
 
 const App = () => {
-  const [goals, setGoals] = useState([
-    {
-      id: 1,
-      title: "Learn React",
-      description: "Learn React and build a project",
-      completed: false,
-    },
-    {
-      id: 2,
-      title: "Learn Node.js",
-      description: "Learn Node.js and build a project",
-      completed: false,
-    },
-  ]);
+  const [goals, setGoals] = useState([]);
 
   const [updatedGoal, setUpdatedGoal] = useState({
     id: null,
@@ -83,6 +70,7 @@ const App = () => {
                     goals={goals}
                     removeGoal={removeGoal}
                     updateGoalCall={updateGoalCall}
+                    setGoals={setGoals}
                   />
                   }
                   />
