@@ -8,7 +8,7 @@ const Goal = (props) => {
     // e.preventDefault();
     let token = localStorage.getItem('token');
     if(!token){
-      navigate('/login')
+      navigate('/')
     }
 
     const response = await fetch (`http://localhost:5000/api/goals/${props.goal._id}`, {

@@ -11,7 +11,7 @@ import Home from "./components/Home";
 const App = () => {
   const [goals, setGoals] = useState([]);
   const [id, setID] = useState('')
-  const [navbarMain, setNavbarMain ] = useState(true)
+  const [navbarMain, setNavbarMain ] = useState(false)
 
   const [updatedGoal, setUpdatedGoal] = useState({
     id: null,
@@ -55,7 +55,7 @@ const App = () => {
     <Router>
       <Navbar navbarMain={navbarMain} toggleNavbar={toggleNavbar} />
       <Routes>
-        <Route path="/login" element={<Login toggleNavbar={toggleNavbar} />} />
+        <Route path="/" element={<Login toggleNavbar={toggleNavbar} />} />
 
         <Route path="/signup" element={<Signup />} />
         <Route

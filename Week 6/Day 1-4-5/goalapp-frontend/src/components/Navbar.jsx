@@ -40,7 +40,7 @@ const Navbar = (props) => {
               Create New Goal
             </Link>
             <Link
-              to="/login"
+              to="/"
               className="p-4"
               onClick={() => {
                 localStorage.setItem("token", "");
@@ -56,7 +56,7 @@ const Navbar = (props) => {
             <Link to="/signup" className="p-4">
               Signup
             </Link>
-            <Link to="/login" className="p-4">
+            <Link to="/" className="p-4">
               LogIn
             </Link>
           </div>

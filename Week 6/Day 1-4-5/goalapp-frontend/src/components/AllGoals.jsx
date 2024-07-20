@@ -6,7 +6,7 @@ const AllGoals = (props) => {
   let navigate = useNavigate();
   useEffect(() => {
     if (!localStorage.getItem('token')) {
-      navigate('/login')
+      navigate('/')
     }
     const getGoals = async () => {
     let token = localStorage.getItem('token')

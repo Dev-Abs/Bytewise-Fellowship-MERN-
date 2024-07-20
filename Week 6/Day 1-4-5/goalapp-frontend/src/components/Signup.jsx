@@ -22,7 +22,7 @@ const Signup = () => {
     const data = await response.json();
     if (response.status === 201) {
     localStorage.setItem("token", data.token);
-      navigate("/login");
+      navigate("/");
     }
   };
   return (

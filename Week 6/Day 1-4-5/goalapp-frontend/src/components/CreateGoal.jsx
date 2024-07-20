@@ -7,7 +7,7 @@ const CreateGoal = (props) => {
 
   useEffect(()=>{
     if(!localStorage.getItem("token")){
-      navigate('/login')
+      navigate('/')
     }
   })
 
