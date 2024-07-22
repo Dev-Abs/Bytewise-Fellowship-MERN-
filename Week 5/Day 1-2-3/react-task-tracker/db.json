@@ -3,8 +3,14 @@
     {
       "text": "Food Shopping",
       "day": "Sunday, 1400hrs",
-      "reminder": false,
-      "id": 1
+      "reminder": true,
+      "id": "1"
+    },
+    {
+      "id": "f339",
+      "text": "Week 5 of Fellowship",
+      "day": "Tuesday, 1600hrs",
+      "reminder": false
     }
   ]
 }
