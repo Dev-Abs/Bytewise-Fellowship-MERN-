@@ -2,7 +2,6 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs').promises;
 const path = require('path');
-
 const PORT = process.env.PORT || 3500;
 const dataFilePath = path.join(__dirname, 'data', 'data.json');
 
@@ -15,7 +14,6 @@ const readJsonFile = async (filePath) => {
     return { tasks: [] };
   }
 };
-
 const writeJsonFile = async (filePath, data) => {
   try {
     await fs.writeFile(filePath, JSON.stringify(data, null, 2));
@@ -23,14 +21,12 @@ const writeJsonFile = async (filePath, data) => {
     console.error('Error writing JSON file:', error);
   }
 };
-
 const handleCors = (res) => {
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000"); 
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   };
   
-
 // Utility function to parse JSON request body
 const parseRequestBody = (req) => {
   return new Promise((resolve, reject) => {
