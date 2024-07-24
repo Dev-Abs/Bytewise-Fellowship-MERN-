@@ -22,12 +22,12 @@ export const todoSlice = createSlice({
         addTask: (state, action)=>{
             const newTask = {
                 id: nanoid(),
-                title: action.payload.title,
+                title: action.payload,
             };
             state.tasks.push(newTask);
         },
         deleteTask: (state, action)=>{
-            const { id } = action.payload;
+            const id = action.payload;
             state.tasks = state.tasks.filter((task)=> task.id !== id);
         }
     }
