@@ -34,6 +34,7 @@ The repository is structured to reflect my day-to-day progress. Each folder corr
 | ExpressJS + JWT auth - MERN GoalsApp| 6 | 1-4-5 | Completed | [Link to Task](./Week%206/Day%201-4-5/) |
 | JWT auth | 7 | Day 1 | Completed | [Link to Task](./Week%207/Day%201/) |
 | Redux - Redux toolkit | 7 | Day 2-3-4 | Completed | [Link to Task](./Week%207/Day%202-3/) |
+| React State Management | 7 | Day 5 | Completed | [Link to Task](./Week%207/Day%205/) |
 
 ...
 
