@@ -2,9 +2,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signupUser } from "../features/users/signupSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/blog.png";
-const Signup = () => {
+import SuccessAlert from "./SuccessAlert";
+const Signup = ({ toggleSuccess }) => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: "",
@@ -30,6 +31,7 @@ const Signup = () => {
   useEffect(()=> {
     if(value){
     navigate('/login')
+    toggleSuccess()
     }
   })
 
@@ -152,14 +154,6 @@ const Signup = () => {
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Error: {error}
-            </a>
-          )}
-          {value && (
-            <a
-              href="#"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-            >
-              
             </a>
           )}
         </div>
