@@ -133,11 +133,91 @@ const deleteBlogPost = async (req, res) => {
     }
   };
 
+
+  const addComment = async (req, res) => {
+    const { content } = req.body;
+  
+    try {
+      const blog = await Blog.findById(req.params.id);
+  
+      if (!blog) {
+        return res.status(404).json({ msg: 'Blog post not found' });
+      }
+  
+      const newComment = {
+        userId: req.user.id,
+        content,
+        createdAt: Date.now()
+      };
+  
+      blog.comments.unshift(newComment); // Add new comment to the beginning of the comments array
+      await blog.save();
+      res.json(blog.comments);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  };
+
+  const likeBlogPost = async (req, res) => {
+    try {
+      const blog = await Blog.findById(req.params.id);
+  
+      if (!blog) {
+        return res.status(404).json({ msg: 'Blog post not found' });
+      }
+  
+      // Check if the post has already been liked by the user
+      if (blog.likes && blog.likes.some(like => like.userId && like.userId.toString() === req.user.id)) {
+        return res.status(400).json({ msg: 'Post already liked' });
+      }
+  
+      // Add the user's like
+      blog.likes.unshift({ userId: req.user.id });
+      await blog.save();
+  
+      res.json(blog.likes);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  };
+  
+
+  const unlikeBlogPost = async (req, res) => {
+    try {
+      const blog = await Blog.findById(req.params.id);
+  
+      if (!blog) {
+        return res.status(404).json({ msg: 'Blog post not found' });
+      }
+  
+      // Check if the post has not yet been liked by the user
+      if (!blog.likes.some(like => like.userId.toString() === req.user.id)) {
+        return res.status(400).json({ msg: 'Post has not yet been liked' });
+      }
+  
+      // Remove the like
+      blog.likes = blog.likes.filter(like => like.userId.toString() !== req.user.id);
+      await blog.save();
+      res.json(blog.likes);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  };
+  
+  
+  
+
 module.exports = {
     getBlogs,
     getBlogById,
     createBlogPost,
     updateBlogPost,
-    deleteBlogPost
+    deleteBlogPost,
+    addComment,
+    likeBlogPost,
+    unlikeBlogPost
 }
   
