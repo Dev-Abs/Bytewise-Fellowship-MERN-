@@ -5,7 +5,7 @@
     "scripts": {
         "start": "node backend/server.js",
         "server": "nodemon backend/server.js",
-        "client": "npm start --prefix goalapp-frontend"
+         "client": "npm run dev --prefix frontend"
     },
     "keywords": [],
     "author": "",
