@@ -16,8 +16,8 @@ export const getUser = createAsyncThunk("users/getUser", async (_, { rejectWithV
             url: "http://localhost:5000/api/users/profile",
             headers: {
                 "Content-Type": "application/json",
-                // "Authorization": `Bearer ${token}`,
-                "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YWE3ZDQwOTQxYmIzYTM2ZWMxM2MwOCIsImlhdCI6MTcyMjQ0OTIxNiwiZXhwIjoxNzI1MDQxMjE2fQ.1MzG2vZCGUo8TYIz-1bqVvIYSOdGC5nNRQSO3ylxszg`,
+                "Authorization": `Bearer ${token}`,
+                // "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YWE3ZDQwOTQxYmIzYTM2ZWMxM2MwOCIsImlhdCI6MTcyMjQ0OTIxNiwiZXhwIjoxNzI1MDQxMjE2fQ.1MzG2vZCGUo8TYIz-1bqVvIYSOdGC5nNRQSO3ylxszg`,
             },
         })
         // console.log('response:', await response.data.results)

@@ -9,9 +9,9 @@ const UserProfile = () => {
     const loading = useSelector((state) => state.user.loading)
     const error = useSelector((state) => state.user.error)
 
-    useEffect(() => {
-        dispatch(getUser())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getUser())
+    // }, [dispatch])
 
     if (loading) {
         return <div>Loading...</div>
@@ -25,6 +25,7 @@ const UserProfile = () => {
         <div>
             <h1>User Profile</h1>
             <pre>{JSON.stringify(user)}</pre>
+            <button onClick={() => {dispatch(getUser())}}>Get User</button>
         </div>
     )
 }
