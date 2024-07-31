@@ -1,5 +1,5 @@
 // Signup.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signupUser } from "../features/users/signupSlice";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ const Signup = () => {
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const { loading, error, value } = useSelector((state) => state.signup);
 
@@ -26,6 +27,11 @@ const Signup = () => {
     console.log("formdata:", formData);
     dispatch(signupUser(formData));
   };
+  useEffect(()=> {
+    if(value){
+    navigate('/login')
+    }
+  })
 
   return (
     // <div>
@@ -153,7 +159,7 @@ const Signup = () => {
               href="#"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
-              SignUp Successful
+              
             </a>
           )}
         </div>
