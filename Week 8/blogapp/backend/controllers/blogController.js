@@ -136,7 +136,7 @@ const deleteBlogPost = async (req, res) => {
   const getMyBlogs = asyncHandler(async (req, res) => {
     console.log('User ID:', req.user._id); // Log user ID
     try {
-      const blogs = await Blog.find({ author: req.user._id });
+      const blogs = await Blog.find({ author: req.user._id}).populate('author', 'name email'); // Find all blogs by the logged in user
       res.json(blogs);
     } catch (error) {
       console.error('Error fetching blogs:', error); // Log error

@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import BlogList from "./components/BlogsList";
 import CreateBlog from "./components/CreateBlog";
 import Navbar from "./components/Navbar";
+import MyBlogs from "./components/MyBlogs";
 
 function App() {
   const [alert,setAlert] = useState(false)
@@ -30,7 +31,8 @@ function App() {
       {alert && <SuccessAlert />}
     <Routes>
     {/* <Route path="/" element={<Signup toggleSuccess={toggleSuccess}/>} /> */}
-    <Route path="/" element={<BlogList />} />
+    {/* <Route path="/" element={<BlogList />} /> */}
+    <Route path="/" element={<MyBlogs />} />
     {/* <Route path="/" element={<CreateBlog />} /> */}
     <Route path="/login" element={<Login />} />
     </Routes>

@@ -4,6 +4,7 @@ import signupReducer from '../features/users/signupSlice'
 import loginReducer from '../features/users/loginSlice';
 import blogsReducer from '../features/blogs/blogsSlice'
 import createBlogReducer from '../features/blogs/createBlogSlice';
+import authorSpecificBlogsReducer from '../features/blogs/authorSpecificBlogsSlice';
 
 const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
         signup: signupReducer,
         login: loginReducer,
         blogs: blogsReducer,
-        createBlog: createBlogReducer
+        createBlog: createBlogReducer,
+        authorSpecificBlogs: authorSpecificBlogsReducer
     }
 })
 
