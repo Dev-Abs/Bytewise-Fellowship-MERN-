@@ -28,8 +28,8 @@ function App() {
       {alert && <SuccessAlert />}
     <Routes>
     {/* <Route path="/" element={<Signup toggleSuccess={toggleSuccess}/>} /> */}
-    {/* <Route path="/" element={<BlogList />} /> */}
-    <Route path="/" element={<CreateBlog />} />
+    <Route path="/" element={<BlogList />} />
+    {/* <Route path="/" element={<CreateBlog />} /> */}
     <Route path="/login" element={<Login />} />
     </Routes>
   </Router>
