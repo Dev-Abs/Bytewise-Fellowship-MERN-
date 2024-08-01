@@ -133,6 +133,18 @@ const deleteBlogPost = async (req, res) => {
     }
   };
 
+  const getMyBlogs = asyncHandler(async (req, res) => {
+    console.log('User ID:', req.user._id); // Log user ID
+    try {
+      const blogs = await Blog.find({ author: req.user._id });
+      res.json(blogs);
+    } catch (error) {
+      console.error('Error fetching blogs:', error); // Log error
+      res.status(500).json({ message: error.message });
+    }
+  });
+   
+
 
   const addComment = async (req, res) => {
     const { content } = req.body;
@@ -222,6 +234,7 @@ module.exports = {
     deleteBlogPost,
     addComment,
     likeBlogPost,
-    unlikeBlogPost
+    unlikeBlogPost,
+    getMyBlogs
 }
   
