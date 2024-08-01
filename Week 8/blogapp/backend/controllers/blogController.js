@@ -159,29 +159,32 @@ const deleteBlogPost = async (req, res) => {
     }
   };
 
-  const likeBlogPost = async (req, res) => {
-    try {
-      const blog = await Blog.findById(req.params.id);
-  
-      if (!blog) {
-        return res.status(404).json({ msg: 'Blog post not found' });
-      }
-  
-      // Check if the post has already been liked by the user
-      if (blog.likes && blog.likes.some(like => like.userId && like.userId.toString() === req.user.id)) {
-        return res.status(400).json({ msg: 'Post already liked' });
-      }
-  
-      // Add the user's like
-      blog.likes.unshift({ userId: req.user.id });
-      await blog.save();
-  
-      res.json(blog.likes);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Server error');
+const likeBlogPost = asyncHandler(async (req, res) => {
+
+    // Find the blog post by ID
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) {
+        res.status(404)
+        throw new Error('Blog not found')
     }
-  };
+
+    // Check if the blog is already liked by the user
+    const userLikeIndex = blog.likes.findIndex(like => like.userId.toString() === req.user.id)
+
+    if (userLikeIndex !== -1) {
+        // If already liked, remove the like
+        blog.likes.splice(userLikeIndex, 1)
+    } else {
+        // If not liked, add the like
+        blog.likes.push({ userId: req.user.id })
+    }
+
+    // Save the updated blog
+    await blog.save()
+
+    // Respond with the updated likes
+    res.json(blog.likes)
+})
   
 
   const unlikeBlogPost = async (req, res) => {
