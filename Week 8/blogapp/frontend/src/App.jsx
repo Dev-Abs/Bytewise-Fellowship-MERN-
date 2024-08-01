@@ -6,6 +6,7 @@ import UserProfile from "./components/UserProfle"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import BlogList from "./components/BlogsList";
 import CreateBlog from "./components/CreateBlog";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [alert,setAlert] = useState(false)
@@ -25,6 +26,7 @@ function App() {
     // </>
 
     <Router>
+      <Navbar />
       {alert && <SuccessAlert />}
     <Routes>
     {/* <Route path="/" element={<Signup toggleSuccess={toggleSuccess}/>} /> */}
