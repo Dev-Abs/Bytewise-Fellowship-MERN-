@@ -3,16 +3,36 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { likeBlogLocally } from "../features/blogs/blogsSlice";
 import {
-  fetchBlogs,
   addComment,
   likeBlog,
   unlikeBlog,
 } from "../features/blogs/blogsSlice";
-import { fetchAuthorSpecificBlogs } from "../features/blogs/authorSpecificBlogsSlice";
+import { fetchAuthorSpecificBlogs, updateBlog, setBlogId} from "../features/blogs/authorSpecificBlogsSlice";
 
 import { useState } from "react";
 
-const DrawerForm = ({ show, onClose }) => {
+const DrawerForm = ({blogID, show, onClose }) => {
+    const dispatch = useDispatch();
+    const [blogUpdate, setBlogUpdate] = useState({
+        title: "",
+        categories: "",
+        featuredImage: "",
+        body: ""
+    });
+
+    const handleChange = (e) => {
+        setBlogUpdate({
+            ...blogUpdate,
+            [e.target.name]: e.target.value,
+        });
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('blogUpdate', blogUpdate);
+        dispatch(updateBlog({ ...blogUpdate, _id: blogID }));;
+        console.log('blogID to sahi h', blogID);
+    };
+
   return (
     <div
       id="drawer-form"
@@ -50,7 +70,7 @@ const DrawerForm = ({ show, onClose }) => {
         </svg>
         <span className="sr-only">Close menu</span>
       </button>
-      <form className="mb-6">
+      <form className="mb-6" onSubmit={handleSubmit}>
         <div className="mb-6">
           <label
             htmlFor="title"
@@ -61,6 +81,9 @@ const DrawerForm = ({ show, onClose }) => {
           <input
             type="text"
             id="title"
+            name="title"
+            onChange={handleChange}
+            value={blogUpdate.title}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
             placeholder="Blog Title"
             required
@@ -76,6 +99,9 @@ const DrawerForm = ({ show, onClose }) => {
           <input
             type="text"
             id="category"
+            name="categories"
+            onChange={handleChange}
+            value={blogUpdate.categories}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
             placeholder="Blog Category"
             required
@@ -91,6 +117,9 @@ const DrawerForm = ({ show, onClose }) => {
           <input
             type="text"
             id="image"
+            name="featuredImage"
+            onChange={handleChange}
+            value={blogUpdate.featuredImage}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
             placeholder="Image URL"
             required
@@ -106,6 +135,9 @@ const DrawerForm = ({ show, onClose }) => {
           <textarea
             id="body"
             rows="4"
+            name="body"
+            onChange={handleChange}
+            value={blogUpdate.body}
             className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
             placeholder="Write the blog content..."
           ></textarea>
@@ -127,6 +159,8 @@ const MyBlogs = () => {
     (state) => state.authorSpecificBlogs
   );
 
+  const [blogID, setBlogID] = useState(null);
+
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
@@ -146,7 +180,10 @@ const MyBlogs = () => {
     dispatch(unlikeBlog(blogId));
   };
 
-  const handleOpenDrawer = () => {
+  const handleOpenDrawer = (ID) => () => {
+    console.log('ID', ID);
+    setBlogID(ID);
+    dispatch(setBlogId(ID));
     setDrawerOpen(true);
   };
 
@@ -186,7 +223,7 @@ const MyBlogs = () => {
                     <div>
                     <button
                       type="button"
-                        onClick={handleOpenDrawer}  
+                      onClick={handleOpenDrawer(blog._id)}  
                       className="focus:outline-none text-white bg-gradient-to-r from-green-700 via-green-600 to-green-400 hover:bg-gradient-to-l focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                     >
                       Update
@@ -268,7 +305,7 @@ const MyBlogs = () => {
           ))}
         </div>
       </div>
-        <DrawerForm show={drawerOpen} onClose={handleCloseDrawer} />
+        <DrawerForm blogID={blogID} show={drawerOpen} onClose={handleCloseDrawer} />
     </section>
   );
 
