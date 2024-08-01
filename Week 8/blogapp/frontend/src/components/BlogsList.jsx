@@ -71,7 +71,9 @@ const BlogsList = () => {
                     <h3 className="text-sm font-medium text-gray-900">Comments</h3>
                     <div className="mt-2 space-y-4">
                       {blog.comments.map((comment) => (
-                        <p key={comment._id} className="text-sm text-gray-600">{comment.content}</p>
+                        <p key={comment._id} className="text-sm text-gray-600">
+                          {/* design following professional level */}
+                          <p className='font-bold text-gray-600'>{comment.name || 'Unknown'} commented:</p> {comment.content}</p>
                       ))}
                     </div>
                     <input

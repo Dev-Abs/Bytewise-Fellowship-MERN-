@@ -147,6 +147,7 @@ const deleteBlogPost = async (req, res) => {
       const newComment = {
         userId: req.user.id,
         content,
+        name: req.user.name,
         createdAt: Date.now()
       };
   
