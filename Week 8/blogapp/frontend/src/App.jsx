@@ -30,11 +30,11 @@ function App() {
       <Navbar />
       {alert && <SuccessAlert />}
     <Routes>
-    {/* <Route path="/" element={<Signup toggleSuccess={toggleSuccess}/>} /> */}
-    {/* <Route path="/" element={<BlogList />} /> */}
-    <Route path="/" element={<MyBlogs />} />
-    {/* <Route path="/" element={<CreateBlog />} /> */}
-    <Route path="/login" element={<Login />} />
+    <Route path="/signup" element={<Signup toggleSuccess={toggleSuccess}/>} />
+    <Route path="/" element={<BlogList />} />
+    <Route path="/myblogs" element={<MyBlogs />} />
+    <Route path="/createblog" element={<CreateBlog />} />
+    <Route path="/signin" element={<Login />} />
     </Routes>
   </Router>
   )

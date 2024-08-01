@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -18,10 +19,12 @@ const Navbar = () => {
       </div> */}
                   <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
-                <a href="#" className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-purple-600">Create Blog</a>
-                <a href="#" className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-purple-600">New Blogs</a>
-                <a href="#" className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-purple-600">Sign In</a>
-                <a href="#" className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-purple-600">Sign Up</a>
+                <Link to="/myblogs" className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-purple-600">My Blogs</Link>
+                <Link to= '/createblog' className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-purple-600">Create Blog</Link>
+                <Link to= '/' className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-purple-600">New Blogs</Link>
+                <Link to= '/signin' className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-purple-600">Sign In</Link>
+                <Link to= '/signup' className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-purple-600">Sign Up</Link>
+            
               </div>
             </div>
       <button className="md:hidden text-white focus:outline-none" onClick={toggleDrawer}>
@@ -40,26 +43,31 @@ const Navbar = () => {
         </button>
         <div className="py-4 overflow-y-auto">
           <ul className="space-y-2 font-medium">
-            <li>
-              <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-purple-400 dark:hover:bg-gray-700 group">
-                <span className="ms-3 ">Blogs</span>
-              </a>
+          <li>
+              <Link to='/myblogs' className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-purple-400 dark:hover:bg-gray-700 group">
+                <span className="ms-3 ">My Blogs</span>
+              </Link>
             </li>
             <li>
-              <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-purple-400 dark:hover:bg-gray-700 group">
+              <Link to='/' className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-purple-400 dark:hover:bg-gray-700 group">
+                <span className="ms-3 ">New Blogs</span>
+              </Link>
+            </li>
+            <li>
+              <Link to= '/createblog' className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-purple-400 dark:hover:bg-gray-700 group">
                 <span className="ms-3">Create Blog</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-purple-400 dark:hover:bg-gray-700 group">
+              <Link to="/signin" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-purple-400 dark:hover:bg-gray-700 group">
                 
                 <span className="ms-3">Sign In</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-purple-400 dark:hover:bg-gray-700 group">
+              <Link to="/signup" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-purple-400 dark:hover:bg-gray-700 group">
                 <span className="ms-3">Sign Up</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
