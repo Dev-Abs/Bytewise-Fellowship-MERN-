@@ -37,9 +37,9 @@ const DrawerForm = ({blogID, show, onClose, toggleSuccess }) => {
         blogUpdate.featuredImage = "";
         blogUpdate.body = "";
         navigate("/myblogs");
+        onClose();
         toggleSuccess("Blog Updated Successfully");
     };
-
   return (
     <div
       id="drawer-form"
@@ -219,7 +219,7 @@ const MyBlogs = ({toggleSuccess}) => {
         </div>
         {loading && <div>Loading...</div>}
         {error && <div>Error: {error.message || error} Please Reload Or check back later!!</div>}
-        <div className="flex flex-wrap -mx-4">
+ { authorSpecificBlogs.length > 0 ?       <div className="flex flex-wrap -mx-4">
           {authorSpecificBlogs.map((blog) => (
             <div key={blog._id} className="w-full md:w-1/2 lg:w-1/3 px-4 mt-2">
               <article className="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-[3px] shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
@@ -318,7 +318,11 @@ const MyBlogs = ({toggleSuccess}) => {
               </article>
             </div>
           ))}
-        </div>
+        </div> : <div className="text-center mx-auto mb-[60px] lg:mb-20 max-w-[710px]">
+              <span className="font-bold text-3xl text-primary block bg-gradient-to-r from-teal-400 to-blue-500 text-transparent bg-clip-text">
+                No Blogs Found
+              </span>
+            </div> }
       </div>
         <DrawerForm blogID={blogID} show={drawerOpen} onClose={handleCloseDrawer} toggleSuccess={toggleSuccess} />
     </section>
