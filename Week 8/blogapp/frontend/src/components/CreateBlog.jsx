@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { createBlog } from "../features/blogs/createBlogSlice";
 import { useNavigate } from "react-router";
 
-const CreateBlog = () => {
+const CreateBlog = ({toggleSuccess}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [blog, setBlog] = React.useState({
@@ -25,7 +25,8 @@ const CreateBlog = () => {
     blog.categories = "";
     blog.featuredImage = "";
     blog.body = "";
-    navigate('/')
+    navigate('/');
+    toggleSuccess("Blog Created Successfully")
   };
 
   return (

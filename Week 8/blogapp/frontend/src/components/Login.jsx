@@ -5,7 +5,7 @@ import { loginUser } from "../features/users/loginSlice";
 import logo from "../assets/blog.png";
 import { Link, useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({toggleSuccess}) => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     email: "",
@@ -25,6 +25,14 @@ const Login = () => {
     e.preventDefault();
     dispatch(loginUser(formData));
   };
+
+  const navigate = useNavigate();
+
+  if (user) {
+    toggleSuccess("Logged In Successfully");
+    navigate("/");
+  }
+
 
   return (
     // <div>

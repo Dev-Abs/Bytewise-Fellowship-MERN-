@@ -30,7 +30,7 @@ const Signup = ({ toggleSuccess }) => {
   useEffect(()=> {
     if(value){
     navigate('/signin')
-    toggleSuccess()
+    toggleSuccess('Signup successful!')
     }
   })
 

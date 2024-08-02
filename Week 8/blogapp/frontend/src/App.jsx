@@ -11,14 +11,20 @@ import MyBlogs from "./components/MyBlogs";
 
 function App() {
   const [alert,setAlert] = useState(false)
+  const [message,setMessage] = useState("")
 
-  const toggleSuccess = () => {
+  const toggleSuccess = (msg) => {
+    setMessage(msg);
     setAlert(!alert)
+    closeAlert()
   }
 
-  const changeAlert = setTimeout(()=>{
-    setAlert(false)
-    }, 4000)
+  const closeAlert = () => {
+    setTimeout(() => {
+      setAlert(false)
+    }, 10000)
+  }
+
   return (
     // <>
     // <UserProfile />
@@ -28,13 +34,13 @@ function App() {
 
     <Router>
       <Navbar />
-      {alert && <SuccessAlert />}
+      {alert && <SuccessAlert message={message } />}
     <Routes>
     <Route path="/signup" element={<Signup toggleSuccess={toggleSuccess}/>} />
     <Route path="/" element={<BlogList />} />
-    <Route path="/myblogs" element={<MyBlogs />} />
-    <Route path="/createblog" element={<CreateBlog />} />
-    <Route path="/signin" element={<Login />} />
+    <Route path="/myblogs" element={<MyBlogs toggleSuccess={toggleSuccess} />} />
+    <Route path="/createblog" element={<CreateBlog toggleSuccess={toggleSuccess} />} />
+    <Route path="/signin" element={<Login toggleSuccess={toggleSuccess} />} />
     </Routes>
   </Router>
   )

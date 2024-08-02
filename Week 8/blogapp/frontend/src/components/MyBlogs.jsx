@@ -10,8 +10,9 @@ import {
 import { fetchAuthorSpecificBlogs, updateBlog, setBlogId, deleteBlog} from "../features/blogs/authorSpecificBlogsSlice";
 
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
-const DrawerForm = ({blogID, show, onClose }) => {
+const DrawerForm = ({blogID, show, onClose, toggleSuccess }) => {
     const dispatch = useDispatch();
     const [blogUpdate, setBlogUpdate] = useState({
         title: "",
@@ -19,6 +20,7 @@ const DrawerForm = ({blogID, show, onClose }) => {
         featuredImage: "",
         body: ""
     });
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setBlogUpdate({
@@ -29,6 +31,12 @@ const DrawerForm = ({blogID, show, onClose }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(updateBlog({ ...blogUpdate, _id: blogID }));
+        blogUpdate.title = "";
+        blogUpdate.categories = "";
+        blogUpdate.featuredImage = "";
+        blogUpdate.body = "";
+        navigate("/myblogs");
+        toggleSuccess("Blog Updated Successfully");
     };
 
   return (
@@ -36,7 +44,7 @@ const DrawerForm = ({blogID, show, onClose }) => {
       id="drawer-form"
       className={`fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform ${
         show ? "translate-x-0" : "-translate-x-full"
-      } bg-white w-80 dark:bg-gray-800 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 shadow-lg`}
+      } bg-white w-80 md:w-[40%] md:h-[70%] dark:bg-gray-800 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 shadow-lg`}
       tabIndex="-1"
       aria-labelledby="drawer-form-label"
     >
@@ -151,8 +159,9 @@ const DrawerForm = ({blogID, show, onClose }) => {
   );
 };
 
-const MyBlogs = () => {
+const MyBlogs = ({toggleSuccess}) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { authorSpecificBlogs, loading, error } = useSelector(
     (state) => state.authorSpecificBlogs
   );
@@ -188,6 +197,12 @@ const MyBlogs = () => {
     setDrawerOpen(false);
   };
 
+  const deleteBlogHandle = (blogId) => {
+    dispatch(deleteBlog(blogId));
+    toggleSuccess('Blog Deleted Successfully');
+    navigate('/myblogs'); 
+  };
+
   return (
     <section className="pt-20 lg:pt-[120px] pb-10 lg:pb-20">
       <div className="container">
@@ -201,7 +216,7 @@ const MyBlogs = () => {
           </div>
         </div>
         {loading && <div>Loading...</div>}
-        {error && <div>Error: {error.message || error}</div>}
+        {error && <div>Error: {error.message || error} Please Reload Or check back later!!</div>}
         <div className="flex flex-wrap -mx-4">
           {authorSpecificBlogs.map((blog) => (
             <div key={blog._id} className="w-full md:w-1/2 lg:w-1/3 px-4 mt-2">
@@ -227,7 +242,7 @@ const MyBlogs = () => {
                     </button>
                     <button
                       type="button"
-                      onClick={() => dispatch(deleteBlog(blog._id))}
+                      onClick={() => deleteBlogHandle(blog._id)}
                       className="focus:outline-none text-white bg-gradient-to-r from-red-700 via-red-600 to-red-400 hover:bg-gradient-to-l focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                     >
                       Delete
@@ -303,7 +318,7 @@ const MyBlogs = () => {
           ))}
         </div>
       </div>
-        <DrawerForm blogID={blogID} show={drawerOpen} onClose={handleCloseDrawer} />
+        <DrawerForm blogID={blogID} show={drawerOpen} onClose={handleCloseDrawer} toggleSuccess={toggleSuccess} />
     </section>
   );
 
