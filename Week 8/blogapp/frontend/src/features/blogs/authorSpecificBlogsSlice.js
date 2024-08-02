@@ -43,6 +43,23 @@ export const updateBlog = createAsyncThunk("authorSpecificBlogs/updateBlog", asy
     }
 })
 
+// delete blog thunk
+
+export const deleteBlog = createAsyncThunk("authorSpecificBlogs/deleteBlog", async (id, { rejectWithValue }) => {
+    try {
+        const response = await axios.delete(`http://localhost:5000/api/blogs/${id}`, {
+            headers: {
+                "Content-Type": "application/json",
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        return response.data
+    } catch (error) {
+        return rejectWithValue(error.response ? error.response.data : { message: error.message })
+    }
+})
+
+
 // Slice for authorSpecificBlogs
 
 const authorSpecificBlogsSlice = createSlice({
@@ -75,6 +92,18 @@ const authorSpecificBlogsSlice = createSlice({
                 }
                 return blog
             })
+        })
+        builder.addCase(updateBlog.rejected, (state, action) => {
+            state.loading = false
+            state.error = action.payload.message
+        })
+        builder.addCase(deleteBlog.fulfilled, (state, action) => {
+            state.loading = false
+            state.authorSpecificBlogs = state.authorSpecificBlogs.filter(blog => blog._id !== action.payload._id)
+        })
+        builder.addCase(deleteBlog.rejected, (state, action) => {
+            state.loading = false
+            state.error = action.payload.message
         })
     }
 })

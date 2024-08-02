@@ -7,7 +7,7 @@ import {
   likeBlog,
   unlikeBlog,
 } from "../features/blogs/blogsSlice";
-import { fetchAuthorSpecificBlogs, updateBlog, setBlogId} from "../features/blogs/authorSpecificBlogsSlice";
+import { fetchAuthorSpecificBlogs, updateBlog, setBlogId, deleteBlog} from "../features/blogs/authorSpecificBlogsSlice";
 
 import { useState } from "react";
 
@@ -230,6 +230,7 @@ const MyBlogs = () => {
                     </button>
                     <button
                       type="button"
+                      onClick={() => dispatch(deleteBlog(blog._id))}
                       className="focus:outline-none text-white bg-gradient-to-r from-red-700 via-red-600 to-red-400 hover:bg-gradient-to-l focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                     >
                       Delete
