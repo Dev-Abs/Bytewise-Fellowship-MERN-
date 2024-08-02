@@ -15,7 +15,6 @@ export const signupUser = createAsyncThunk("users/signupUser", async (userData, 
                 "Content-Type": "application/json",
             }, 
         })
-        console.log('response:', response)
         localStorage.setItem('token', response.data.token)
         return response.data
     } catch (error) {

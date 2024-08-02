@@ -14,7 +14,6 @@ const initialState = {
 export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async (_, { rejectWithValue }) => {
     try {
         const response = await axios.get("http://localhost:5000/api/blogs")
-        console.log('response:', response)
         // initialState.localBlogs = [...response.data]
         return response.data
     } catch (error) {
@@ -44,7 +43,6 @@ export const likeBlog = createAsyncThunk("blogs/likeBlog", async (blogId, { reje
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             },
         })
-        console.log('response:', response)
         // if response.status is 200 
         if(response.status === 400){
             return response.data
@@ -76,7 +74,6 @@ const blogSlice = createSlice({
     initialState,
     reducers: {
         likeBlogLocally(state, action) {
-            console.log('inside likeBlogLocally', action.payload)
             const blogIndex = state.blogs.findIndex(blog => blog._id === action.payload)
             if (blogIndex >= 0) {
                 state.blogs[blogIndex].likes.push({ userId: action.payload })

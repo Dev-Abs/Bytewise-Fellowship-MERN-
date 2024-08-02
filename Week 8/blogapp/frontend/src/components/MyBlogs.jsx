@@ -28,9 +28,7 @@ const DrawerForm = ({blogID, show, onClose }) => {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('blogUpdate', blogUpdate);
-        dispatch(updateBlog({ ...blogUpdate, _id: blogID }));;
-        console.log('blogID to sahi h', blogID);
+        dispatch(updateBlog({ ...blogUpdate, _id: blogID }));
     };
 
   return (
@@ -181,7 +179,6 @@ const MyBlogs = () => {
   };
 
   const handleOpenDrawer = (ID) => () => {
-    console.log('ID', ID);
     setBlogID(ID);
     dispatch(setBlogId(ID));
     setDrawerOpen(true);

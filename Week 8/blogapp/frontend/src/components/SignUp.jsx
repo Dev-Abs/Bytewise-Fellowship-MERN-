@@ -25,7 +25,6 @@ const Signup = ({ toggleSuccess }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("formdata:", formData);
     dispatch(signupUser(formData));
   };
   useEffect(()=> {

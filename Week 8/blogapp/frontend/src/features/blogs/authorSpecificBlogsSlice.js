@@ -29,7 +29,6 @@ export const fetchAuthorSpecificBlogs = createAsyncThunk("authorSpecificBlogs/fe
 
 // update blog thunk
 export const updateBlog = createAsyncThunk("authorSpecificBlogs/updateBlog", async (data, { rejectWithValue }) => {
-    console.log('data', data);
     try {
         const response = await axios.put(`http://localhost:5000/api/blogs/${data._id}`, data, {
             headers: {
@@ -68,7 +67,6 @@ const authorSpecificBlogsSlice = createSlice({
     reducers: {
         setBlogId: (state, action) => {
             state.blogId = action.payload
-            console.log('Blog ID in slice:', state.blogId);
         }
     },
     extraReducers: (builder) => {
@@ -84,7 +82,6 @@ const authorSpecificBlogsSlice = createSlice({
             state.error = action.payload.message
         })
         builder.addCase(updateBlog.fulfilled, (state, action) => {
-            console.log('Update action payload:', action.payload);
             state.loading = false
             state.authorSpecificBlogs = state.authorSpecificBlogs.map(blog => {
                 if (blog._id === action.payload._id) {
