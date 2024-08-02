@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { likeBlogLocally } from "../features/blogs/blogsSlice";
+import { getUser } from '../features/users/getUserSlice'
 import {
   addComment,
   likeBlog,
@@ -165,13 +166,14 @@ const MyBlogs = ({toggleSuccess}) => {
   const { authorSpecificBlogs, loading, error } = useSelector(
     (state) => state.authorSpecificBlogs
   );
-
+  const user = useSelector((state) => state.user.value)
   const [blogID, setBlogID] = useState(null);
 
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAuthorSpecificBlogs());
+    dispatch(getUser());
   }, [dispatch]);
 
   const handleAddComment = (blogId, content) => {
@@ -208,9 +210,9 @@ const MyBlogs = ({toggleSuccess}) => {
       <div className="container">
         <div className="flex flex-wrap justify-center -mx-4">
           <div className="w-full px-4">
-            <div className="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
-              <span className="font-bold text-3xl text-primary mb-2 block bg-gradient-to-r from-teal-400 to-blue-500 text-transparent bg-clip-text">
-                Your Blogs
+            <div className="text-center mx-auto mb-[60px] lg:mb-20 max-w-[710px]">
+              <span className="font-bold text-3xl text-primary block bg-gradient-to-r from-teal-400 to-blue-500 text-transparent bg-clip-text">
+                { user.name ? `${user.name}'s Blogs` : "My Blogs"}
               </span>
             </div>
           </div>
