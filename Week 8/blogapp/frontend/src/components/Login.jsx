@@ -1,5 +1,5 @@
 // Login.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../features/users/loginSlice";
 import logo from "../assets/blog.png";
@@ -28,10 +28,12 @@ const Login = ({toggleSuccess}) => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
   if (user) {
     toggleSuccess("Logged In Successfully");
     navigate("/");
   }
+}, [user]);
 
 
   return (

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   let token = localStorage.getItem('token');
+  const navigate = useNavigate();
 
   const user = useSelector((state) => state.login.user);
 
@@ -13,6 +14,9 @@ const Navbar = () => {
   };
   useEffect(() => {
     token = localStorage.getItem('token');
+    if (!user) {
+      navigate('/');
+    }
   }, []);
 
   const signOut = () => {
