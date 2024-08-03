@@ -12,7 +12,7 @@ const initialState = {
 
 export const loginUser = createAsyncThunk("users/loginUser", async (loginData, { rejectWithValue }) => {
     try {
-        const response = await axios.post("http://localhost:5000/api/users/login", loginData, {
+        const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/users/login`, loginData, {
             headers: {
                 "Content-Type": "application/json",
             },

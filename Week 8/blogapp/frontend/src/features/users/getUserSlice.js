@@ -13,7 +13,7 @@ export const getUser = createAsyncThunk("users/getUser", async (_, { rejectWithV
         const token = localStorage.getItem('token')
         const response = await axios({
             method: "GET",
-            url: "http://localhost:5000/api/users/profile",
+            url: "${process.env.REACT_APP_BASE_URL}/api/users/profile",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`,

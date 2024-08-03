@@ -13,7 +13,7 @@ const initialState = {
 // Thunks for asynchronous operations
 export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async (_, { rejectWithValue }) => {
     try {
-        const response = await axios.get("http://localhost:5000/api/blogs")
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/blogs`)
         // initialState.localBlogs = [...response.data]
         return response.data
     } catch (error) {
@@ -23,7 +23,7 @@ export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async (_, { rejec
 
 export const addComment = createAsyncThunk("blogs/addComment", async ({ blogId, content }, { rejectWithValue }) => {
     try {
-        const response = await axios.post(`http://localhost:5000/api/blogs/${blogId}/comment`, { content }, {
+        const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/blogs/${blogId}/comment`, { content }, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
@@ -38,7 +38,7 @@ export const addComment = createAsyncThunk("blogs/addComment", async ({ blogId, 
 export const likeBlog = createAsyncThunk("blogs/likeBlog", async (blogId, { rejectWithValue }) => {
     
     try {
-        const response = await axios.put(`http://localhost:5000/api/blogs/${blogId}/like`, {}, {
+        const response = await axios.put(`${process.env.REACT_APP_BASE_URL}/api/blogs/${blogId}/like`, {}, {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             },
@@ -58,7 +58,7 @@ export const likeBlog = createAsyncThunk("blogs/likeBlog", async (blogId, { reje
 
 export const unlikeBlog = createAsyncThunk("blogs/unlikeBlog", async (blogId, { rejectWithValue }) => {
     try {
-        const response = await axios.put(`http://localhost:5000/api/blogs/${blogId}/unlike`, {}, {
+        const response = await axios.put(`${process.env.REACT_APP_BASE_URL}/api/blogs/${blogId}/unlike`, {}, {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             },

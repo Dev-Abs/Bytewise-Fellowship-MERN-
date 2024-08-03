@@ -10,7 +10,7 @@ const initialState = {
 
 export const signupUser = createAsyncThunk("users/signupUser", async (userData, { rejectWithValue }) => {
     try {
-        const response = await axios.post("http://localhost:5000/api/users", userData, {
+        const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/users`, userData, {
             headers: {
                 "Content-Type": "application/json",
             }, 

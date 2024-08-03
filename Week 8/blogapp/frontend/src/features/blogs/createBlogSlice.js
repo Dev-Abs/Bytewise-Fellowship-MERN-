@@ -2,7 +2,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const createBlog = createAsyncThunk( 'blogs/createBlog', async (blog) => {
-    const response = await fetch('http://localhost:5000/api/blogs', {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/blogs`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
