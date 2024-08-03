@@ -193,8 +193,10 @@ const BlogsList = () => {
                             {comment.name || "you commented"} commented:
                           </span>
                           <span className="justify-end text-xs text-gray-400">
-                            {" "}
-                            on {new Date(comment.createdAt).toLocaleDateString()} at{" "} {new Date(comment.createdAt).toLocaleTimeString()}{" "}
+                            {/* if Invalid Date Show 'now */}
+                            {new Date(comment.createdAt).toLocaleDateString() === "Invalid Date" ? "now" 
+                            : `on ${new Date(comment.createdAt).toLocaleDateString()} at ${''} ${new Date(comment.createdAt).toLocaleTimeString()}${''}`
+                            }{" "}
                           </span>
                           </div>
                           {" "}
