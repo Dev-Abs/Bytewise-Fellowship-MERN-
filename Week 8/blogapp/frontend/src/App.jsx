@@ -8,6 +8,7 @@ import BlogList from "./components/BlogsList";
 import CreateBlog from "./components/CreateBlog";
 import Navbar from "./components/Navbar";
 import MyBlogs from "./components/MyBlogs";
+import Footer from "./components/Footer";
 
 function App() {
   const [alert,setAlert] = useState(false)
@@ -42,6 +43,7 @@ function App() {
     <Route path="/createblog" element={<CreateBlog toggleSuccess={toggleSuccess} />} />
     <Route path="/signin" element={<Login toggleSuccess={toggleSuccess} />} />
     </Routes>
+    <Footer />
   </Router>
   )
 }

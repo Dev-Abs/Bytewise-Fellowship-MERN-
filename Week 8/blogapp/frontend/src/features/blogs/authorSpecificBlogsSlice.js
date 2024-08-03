@@ -13,7 +13,7 @@ const initialState = {
 
 export const fetchAuthorSpecificBlogs = createAsyncThunk("authorSpecificBlogs/fetchAuthorSpecificBlogs", async (_, { rejectWithValue }) => {
     try {
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/blogs/my/blogs`, {
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/blogs/my/blogs`, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
@@ -30,7 +30,7 @@ export const fetchAuthorSpecificBlogs = createAsyncThunk("authorSpecificBlogs/fe
 // update blog thunk
 export const updateBlog = createAsyncThunk("authorSpecificBlogs/updateBlog", async (data, { rejectWithValue }) => {
     try {
-        const response = await axios.put(`${process.env.REACT_APP_BASE_URL}/api/blogs/${data._id}`, data, {
+        const response = await axios.put(`${import.meta.env.VITE_BASE_URL}/api/blogs/${data._id}`, data, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
@@ -46,7 +46,7 @@ export const updateBlog = createAsyncThunk("authorSpecificBlogs/updateBlog", asy
 
 export const deleteBlog = createAsyncThunk("authorSpecificBlogs/deleteBlog", async (id, { rejectWithValue }) => {
     try {
-        const response = await axios.delete(`${process.env.REACT_APP_BASE_URL}/api/blogs/${id}`, {
+        const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/blogs/${id}`, {
             headers: {
                 "Content-Type": "application/json",
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
