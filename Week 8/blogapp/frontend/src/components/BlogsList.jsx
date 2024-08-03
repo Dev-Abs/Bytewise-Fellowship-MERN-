@@ -10,7 +10,6 @@ import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { likeBlogLocally } from "../features/blogs/blogsSlice";
 import { selectAllLocalBlogs } from "../features/blogs/blogsSlice";
 import { getUser } from "../features/users/getUserSlice";
-import { set } from "mongoose";
 
 const BlogsList = () => {
   const dispatch = useDispatch();
