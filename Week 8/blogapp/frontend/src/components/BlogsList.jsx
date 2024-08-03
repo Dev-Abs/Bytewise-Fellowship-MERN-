@@ -10,6 +10,7 @@ import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { likeBlogLocally } from "../features/blogs/blogsSlice";
 import { selectAllLocalBlogs } from "../features/blogs/blogsSlice";
 import { getUser } from "../features/users/getUserSlice";
+import { set } from "mongoose";
 
 const BlogsList = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const BlogsList = () => {
   const [blogLikes, setBlogLikes] = useState([]);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState({});
+  const [liked, setLiked] = useState(false);
 
   useEffect(() => {
     dispatch(fetchBlogs());
@@ -34,6 +36,8 @@ const BlogsList = () => {
       }))
     );
 
+
+
     const initialComments = {};
     localBlogs.forEach((blog) => {
       initialComments[blog._id] = blog.comments || [];
@@ -48,6 +52,14 @@ const BlogsList = () => {
       [blogId]: [...prevComments[blogId], { userId: user._id, content }],
     }));
     setComment("");
+  };
+
+  const handleLiked = (blogId) => {
+    const blogLike = blogLikes.find((blog) => blog.blogId === blogId);
+    if (blogLike) {
+      return blogLike.likes.some((like) => like.userId === user._id);
+    }
+    return false;
   };
 
   const getComments = (blogId) => {
@@ -140,6 +152,14 @@ const BlogsList = () => {
                     >
                       <FaThumbsUp className="mr-1" /> {getLikes(blog._id)}
                     </button>
+                    {handleLiked(blog._id) && ( 
+                      <button
+                        onClick={() => handleUnlike(blog._id)}
+                        className="flex items-center text-red-500 hover:text-red-700 transition-colors duration-300"
+                      >
+                        <FaThumbsDown className="mr-1" /> Unlike
+                      </button>
+                    )}
                   </div>
                   <div className="mt-6">
                     <h3 className="text-sm font-medium text-gray-800">Comments</h3>
