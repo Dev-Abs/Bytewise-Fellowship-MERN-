@@ -29,7 +29,7 @@ const Signup = ({ toggleSuccess }) => {
   };
   useEffect(()=> {
     if(value){
-    navigate('/signin')
+    navigate('/')
     toggleSuccess('Signup successful!')
     }
   })

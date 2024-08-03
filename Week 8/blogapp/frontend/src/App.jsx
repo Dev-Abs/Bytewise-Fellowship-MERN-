@@ -34,7 +34,9 @@ function App() {
     // </>
 
     <Router>
+      <div className="flex flex-col min-h-screen">
       <Navbar />
+        <div className="flex-grow">
       {alert && <SuccessAlert message={message } />}
     <Routes>
     <Route path="/signup" element={<Signup toggleSuccess={toggleSuccess}/>} />
@@ -43,7 +45,9 @@ function App() {
     <Route path="/createblog" element={<CreateBlog toggleSuccess={toggleSuccess} />} />
     <Route path="/signin" element={<Login toggleSuccess={toggleSuccess} />} />
     </Routes>
+    </div>
     <Footer />
+    </div>
   </Router>
   )
 }
