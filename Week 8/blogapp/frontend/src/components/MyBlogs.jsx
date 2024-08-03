@@ -48,7 +48,7 @@ const DrawerForm = ({ blogID, show, onClose, toggleSuccess }) => {
   return (
     <div
       id="drawer-form"
-      className={`fixed top-0 left-0 z-40 h-screen p-6 overflow-y-auto transition-transform ${
+      className={`fixed top-32 left-0 z-40 h-screen p-6 overflow-y-auto transition-transform ${
         show ? "translate-x-0" : "-translate-x-full"
       } bg-white w-80 md:w-[40%] md:h-[70%] shadow-lg border border-gray-300`}
       tabIndex="-1"
@@ -186,7 +186,10 @@ const MyBlogs = ({ toggleSuccess }) => {
     dispatch(getUser());
   }, [dispatch]);
 
+  const [token, setToken] = useState(localStorage.getItem("token"));
+
   useEffect(() => {
+    setToken(localStorage.getItem("token"));
     if (authorSpecificBlogs.length === 0) return;
     setBlogLikes(
       authorSpecificBlogs.map((blog) => ({
@@ -308,11 +311,15 @@ const MyBlogs = ({ toggleSuccess }) => {
           </div>
         </div>
         {loading && <div>Loading...</div>}
-        {error && (
-          <div>
-            Error: {error.message || error} Please Reload Or check back later!!
+        {(!token) ? 
+        (
+          <div className="text-center mx-auto mb-[60px] lg:mb-20 max-w-[710px]">
+            <span className="font-bold text-3xl z-10 text-primary block bg-gradient-to-r from-teal-400 to-blue-500 text-transparent bg-clip-text">
+              Error Fetching Blogs
+            </span>
           </div>
-        )}
+        ) : null
+      }
         {sortedBlogs.length > 0 ? (
           <div className="flex flex-wrap -mx-4">
             {sortedBlogs.map((blog) => (

@@ -16,10 +16,6 @@ const Navbar = () => {
 
   useEffect(() => {
     token = localStorage.getItem("token");
-    if (user) {
-      navigate("/");
-    }
-
     const handleScroll = () => {
       if (window.scrollY > 50) { // mean
         setNavbarBackground(true);
