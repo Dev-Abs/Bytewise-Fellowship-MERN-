@@ -31,39 +31,43 @@ const DrawerForm = ({ blogID, show, onClose, toggleSuccess }) => {
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(updateBlog({ ...blogUpdate, _id: blogID }));
-    blogUpdate.title = "";
-    blogUpdate.categories = "";
-    blogUpdate.featuredImage = "";
-    blogUpdate.body = "";
+    setBlogUpdate({
+      title: "",
+      categories: "",
+      featuredImage: "",
+      body: "",
+    });
     navigate("/myblogs");
     onClose();
     toggleSuccess("Blog Updated Successfully");
   };
+
   return (
     <div
       id="drawer-form"
-      className={`fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform ${
+      className={`fixed top-0 left-0 z-40 h-screen p-6 overflow-y-auto transition-transform ${
         show ? "translate-x-0" : "-translate-x-full"
-      } bg-white w-80 md:w-[40%] md:h-[70%] dark:bg-gray-800 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 shadow-lg`}
+      } bg-white w-80 md:w-[40%] md:h-[70%] shadow-lg border border-gray-300`}
       tabIndex="-1"
       aria-labelledby="drawer-form-label"
     >
       <h5
         id="drawer-form-label"
-        className="inline-flex items-center mb-6 text-base font-semibold text-black uppercase"
+        className="mb-6 text-lg font-semibold text-gray-800"
       >
         Update Blog
       </h5>
       <button
         type="button"
         onClick={onClose}
-        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 right-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white"
+        className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
       >
         <svg
-          className="w-3 h-3"
+          className="w-5 h-5"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -79,11 +83,11 @@ const DrawerForm = ({ blogID, show, onClose, toggleSuccess }) => {
         </svg>
         <span className="sr-only">Close menu</span>
       </button>
-      <form className="mb-6" onSubmit={handleSubmit}>
-        <div className="mb-6">
+      <form className="space-y-6" onSubmit={handleSubmit}>
+        <div>
           <label
             htmlFor="title"
-            className="block mb-2 text-sm font-medium text-black"
+            className="block mb-2 text-sm font-medium text-gray-700"
           >
             Title
           </label>
@@ -93,15 +97,15 @@ const DrawerForm = ({ blogID, show, onClose, toggleSuccess }) => {
             name="title"
             onChange={handleChange}
             value={blogUpdate.title}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+            className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
             placeholder="Blog Title"
             required
           />
         </div>
-        <div className="mb-6">
+        <div>
           <label
             htmlFor="category"
-            className="block mb-2 text-sm font-medium text-black"
+            className="block mb-2 text-sm font-medium text-gray-700"
           >
             Category
           </label>
@@ -111,15 +115,15 @@ const DrawerForm = ({ blogID, show, onClose, toggleSuccess }) => {
             name="categories"
             onChange={handleChange}
             value={blogUpdate.categories}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+            className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
             placeholder="Blog Category"
             required
           />
         </div>
-        <div className="mb-6">
+        <div>
           <label
             htmlFor="image"
-            className="block mb-2 text-sm font-medium text-black"
+            className="block mb-2 text-sm font-medium text-gray-700"
           >
             Image URL
           </label>
@@ -129,15 +133,15 @@ const DrawerForm = ({ blogID, show, onClose, toggleSuccess }) => {
             name="featuredImage"
             onChange={handleChange}
             value={blogUpdate.featuredImage}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
             placeholder="Image URL"
             required
           />
         </div>
-        <div className="mb-6">
+        <div>
           <label
             htmlFor="body"
-            className="block mb-2 text-sm font-medium text-black"
+            className="block mb-2 text-sm font-medium text-gray-700"
           >
             Body
           </label>
@@ -147,13 +151,13 @@ const DrawerForm = ({ blogID, show, onClose, toggleSuccess }) => {
             name="body"
             onChange={handleChange}
             value={blogUpdate.body}
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+            className="block w-full text-sm text-gray-900 bg-gray-100 rounded-lg border border-gray-300 p-2.5"
             placeholder="Write the blog content..."
           ></textarea>
         </div>
         <button
           type="submit"
-          className="text-white bg-gradient-to-r from-green-700 via-green-600 to-green-400 hover:bg-gradient-to-l justify-center flex items-center w-full font-medium rounded-lg text-sm px-5 py-2.5 mb-2 d focus:outline-none "
+          className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
         >
           Update
         </button>
@@ -161,6 +165,7 @@ const DrawerForm = ({ blogID, show, onClose, toggleSuccess }) => {
     </div>
   );
 };
+
 
 const MyBlogs = ({ toggleSuccess }) => {
   const dispatch = useDispatch();
@@ -288,22 +293,19 @@ const MyBlogs = ({ toggleSuccess }) => {
         {authorSpecificBlogs.length > 0 ? (
           <div className="flex flex-wrap -mx-4">
             {authorSpecificBlogs.map((blog) => (
-              <div
-                key={blog._id}
-                className="w-full md:w-1/2 lg:w-1/3 px-4 mt-2"
-              >
-                <article className="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-[3px] shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
-                  <div className="rounded-[10px] bg-white p-4 !pt-20 sm:p-6 flex flex-col">
-                    <span className="self-start mb-6 relative top-0 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-                      {blog.categories || "Unknown Category"}
-                    </span>
-                    <div className="flex items-center justify-between">
-                      <time
-                        dateTime={new Date(blog.createdAt).toISOString()}
-                        className="self-start inline-block bg-gradient-to-r from-teal-400 to-blue-500 text-white text-xs px-2 py-1 rounded-full"
-                      >
-                        {new Date(blog.createdAt).toLocaleDateString()}
-                      </time>
+              <div key={blog._id} className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
+              <article className="hover:animate-background hover:bg-[length:400%_400%] hover:[animation-duration:_4s] bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-[3px]  transitionbg-white shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/50">
+                <div className="relative p-6 ounded-[10px] bg-white !pt-20 sm:p-6 flex flex-col">
+                  <span className="absolute top-4 left-4 bg-indigo-500 text-white text-xs font-semibold px-2 py-1 rounded">
+                    {blog.categories || "Unknown Category"}
+                  </span>
+                  <time
+                    dateTime={new Date(blog.createdAt).toISOString()}
+                    className="absolute top-4 right-4 bg-indigo-500 text-white text-xs px-2 py-1 rounded"
+                  >
+                    {new Date(blog.createdAt).toLocaleDateString()}
+                  </time>
+                  <div className="mt-6 flex items-center gap-x-4">
                       <div>
                         <button
                           type="button"
@@ -319,84 +321,59 @@ const MyBlogs = ({ toggleSuccess }) => {
                         >
                           Delete
                         </button>
+
                       </div>
                     </div>
-                    <a className="flex items-center justify-between" href="#">
-                      <h2 className="mt-1 text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 flex items-center">
-                        <svg
-                          className="w-6 h-6 mr-2 text-blue-500"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 13l4 4L19 7"
-                          ></path>
-                        </svg>
-                        {blog.title}
-                      </h2>
-                      <span className="mt-0.5 mr-5 p-2 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-lg ">
-                        {blog.author !== null ? blog.author.name : "Unknown"}
+                  <h2 className="mt-8 text-2xl font-bold text-gray-800 hover:text-indigo-600 transition-colors duration-300">{blog.title}</h2>
+                  <p className="mt-4 text-gray-600">{blog.body}</p>
+                  <div className="mt-6 justify-between flex items-center gap-x-4">
+                    <button
+                      onClick={() => handleLike(blog._id)}
+                      className="flex items-center text-indigo-500 hover:text-indigo-700 transition-colors duration-300"
+                    >
+                      <FaThumbsUp className="mr-1" /> {getLikes(blog._id)}
+                    </button>
+                    <div className="">
+                    <span className="mt-0.5 mr-5 p-2 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-lg ">
+                        By {blog.author !== null ? blog.author.name : "Unknown"}
                       </span>
-                    </a>
-                    <p className="text-base text-body-color">{blog.body}</p>
-                    <div className="mt-4 flex items-center gap-x-4">
-                      <button
-                        onClick={() => handleLike(blog._id)}
-                        className="flex items-center text-gray-600 hover:text-gray-900"
-                      >
-                        <FaThumbsUp className="mr-1" /> {getLikes(blog._id)}
-                      </button>
-                      <button
-                        onClick={() => handleUnlike(blog._id)}
-                        className="flex items-center text-gray-600 hover:text-gray-900"
-                      >
-                        <FaThumbsDown className="mr-1" />
-                      </button>
+                  </div>
                     </div>
-                    <div className="mt-6 w-full">
-                      <h3 className="text-sm font-medium text-gray-900">
-                        Comments
-                      </h3>
-                      <div className="mt-2 space-y-4">
+
+                    <h3 className="mt-6 text-sm font-medium text-gray-800">Comments</h3>
+                    <div className="mt-2 space-y-4">
                       {getComments(blog._id).map((comment, index) => (
-                        <p key={index} className="flex gap-4 text-sm text-gray-600">
+                        <div key={index} className="flex gap-4 text-sm text-gray-600">
                           <div className="flex flex-col">
-                          <span className="font-bold text-gray-600">
-                            {comment.name || "you "} commented:
-                          </span>
-                          <span className="justify-end text-xs text-gray-400">
-                            {/* if Invalid Date Show 'now */}
-                            {new Date(comment.createdAt).toLocaleDateString() === "Invalid Date" ? "now" 
-                            : `on ${new Date(comment.createdAt).toLocaleDateString()} at ${''} ${new Date(comment.createdAt).toLocaleTimeString()}${''}`
-                            }{" "}
-                          </span>
+                            <span className="font-semibold text-gray-800">
+                              {comment.name || "You"} commented:
+                            </span>
+                            <span className="text-xs text-gray-500">
+                              {new Date(comment.createdAt).toLocaleDateString() === "Invalid Date"
+                                ? "now"
+                                : `on ${new Date(comment.createdAt).toLocaleDateString()} at ${new Date(comment.createdAt).toLocaleTimeString()}`
+                              }
+                            </span>
                           </div>
-                          {" "}
-                          <div className="">
-                          {comment.content} 
+                          <div>
+                            {comment.content}
                           </div>
-                        </p>
+                        </div>
                       ))}
                     </div>
-                      <input
-                        type="text"
-                        placeholder="Add a comment"
-                        className="mt-2 w-full rounded-md border-gray-300 shadow-sm"
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter") {
-                            handleAddComment(blog._id, e.target.value);
-                            e.target.value = "";
-                          }
-                        }}
-                      />
-                    </div>
+                    <input
+                      type="text"
+                      placeholder="Add a comment"
+                      className="mt-4 w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors duration-300"
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          handleAddComment(blog._id, e.target.value);
+                          e.target.value = "";
+                        }
+                      }}
+                    />
                   </div>
-                </article>
+                  </article>
               </div>
             ))}
           </div>
