@@ -367,7 +367,7 @@ const MyBlogs = ({ toggleSuccess }) => {
                         <p key={index} className="flex gap-4 text-sm text-gray-600">
                           <div className="flex flex-col">
                           <span className="font-bold text-gray-600">
-                            {comment.name || "you commented"} commented:
+                            {comment.name || "you "} commented:
                           </span>
                           <span className="justify-end text-xs text-gray-400">
                             {/* if Invalid Date Show 'now */}
