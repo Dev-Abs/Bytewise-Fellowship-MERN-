@@ -1,6 +1,6 @@
 // server setup
 const express = require('express');
-const connectDB = require('./config/db');
+const connectDB = require('./config/db.js');
 const dotenv = require('dotenv').config();
 const colors = require('colors');
 const cors = require('cors');
@@ -18,8 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // blogs and user routes setup
 
-app.use('/api/blogs', require('./routes/blogRoutes'));
-app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/blogs', require('./routes/blogRoutes.js'));
+app.use('/api/users', require('./routes/userRoutes.js'));
 
 
 app.use(errorHandler);
