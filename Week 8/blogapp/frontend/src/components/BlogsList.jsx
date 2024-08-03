@@ -9,6 +9,7 @@ import {
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { likeBlogLocally } from "../features/blogs/blogsSlice";
 import { selectAllLocalBlogs } from "../features/blogs/blogsSlice";
+import { getUser } from "../features/users/getUserSlice";
 
 const BlogsList = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const BlogsList = () => {
 
   useEffect(() => {
     dispatch(fetchBlogs());
+    dispatch(getUser());
   }, [dispatch]);
 
   useEffect(() => {
@@ -63,7 +65,7 @@ const BlogsList = () => {
             ...blog,
             likes: blog.likes.filter((like) => like.userId !== user._id),
           };
-        } else {
+        } else if (user._id && !alreadyLiked) {
           return {
             ...blog,
             likes: [...blog.likes, { userId: user._id }],
@@ -73,16 +75,8 @@ const BlogsList = () => {
       return blog;
     });
     setBlogLikes(updatedBlogLikes);
-    if (
-      updatedBlogLikes
-        .find((blog) => blog.blogId === blogId)
-        .likes.some((like) => like.user._id)
-    ) {
       dispatch(likeBlog(blogId));
-      dispatch(likeBlogLocally(blogId));
-    } else {
-      dispatch(unlikeBlog(blogId));
-    }
+      dispatch(likeBlogLocally(blogId))
   };
 
   const getLikes = (blogId) => {
