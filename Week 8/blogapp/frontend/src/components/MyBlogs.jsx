@@ -363,18 +363,24 @@ const MyBlogs = ({ toggleSuccess }) => {
                         Comments
                       </h3>
                       <div className="mt-2 space-y-4">
-                        {getComments(blog._id).map((comment) => (
-                          <p
-                            key={comment._id}
-                            className="text-sm text-gray-600"
-                          >
-                            <span className="font-bold text-gray-600">
-                              {comment.name || "you commented"} commented:
-                            </span>{" "}
-                            {comment.content}
-                          </p>
-                        ))}
-                      </div>
+                      {getComments(blog._id).map((comment, index) => (
+                        <p key={index} className="flex gap-4 text-sm text-gray-600">
+                          <div className="flex flex-col">
+                          <span className="font-bold text-gray-600">
+                            {comment.name || "you commented"} commented:
+                          </span>
+                          <span className="justify-end text-xs text-gray-400">
+                            {" "}
+                            on {new Date(comment.createdAt).toLocaleDateString()} at{" "} {new Date(comment.createdAt).toLocaleTimeString()}{" "}
+                          </span>
+                          </div>
+                          {" "}
+                          <div className="">
+                          {comment.content} 
+                          </div>
+                        </p>
+                      ))}
+                    </div>
                       <input
                         type="text"
                         placeholder="Add a comment"

@@ -1,76 +1,65 @@
 const mongoose = require('mongoose');
 
+const CommentSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
+  content: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+  },
+}, {
+  timestamps: true, // This adds createdAt and updatedAt fields to the comments
+});
+
 const BlogSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   body: {
     type: String,
-    required: true
+    required: true,
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    required: true,
   },
   categories: {
-    type: [String]
+    type: [String],
   },
-  comments: [
-    {
-      userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-      },
-      content: {
-        type: String,
-        required: true
-      },
-      name: {
-        type: String
-      },
-    },
-    {
-        timestamps: true
-    }
-  ],
+  comments: [CommentSchema], // Use the CommentSchema here
   likes: {
     type: [
       {
         userId: {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'User',
-          required: true
-        }
-      }
+          required: true,
+        },
+      },
     ],
-    default: []
+    default: [],
   },
   featuredImage: {
-    type: String
+    type: String,
   },
   slug: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
-//   status: {
-//     type: String,
-//     enum: ['draft', 'published', 'archived'],
-//     default: 'draft'
-//   },
-//   metaDescription: {
-//     type: String
-//   },
   readingTime: {
-    type: Number
-  }
-},
-{
-    timestamps: true // this will add createdAt and updatedAt fields, why? , because we want to know when the goal was created and when it was updated
-}
-);
+    type: Number,
+  },
+}, {
+  timestamps: true, // This adds createdAt and updatedAt fields to the blogs
+});
 
 const Blog = mongoose.model('Blog', BlogSchema);
 
