@@ -173,6 +173,8 @@ const MyBlogs = ({ toggleSuccess }) => {
   const { authorSpecificBlogs, loading, error } = useSelector(
     (state) => state.authorSpecificBlogs
   );
+
+  const sortedBlogs = authorSpecificBlogs.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   const user = useSelector((state) => state.user.value);
   const [blogID, setBlogID] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -290,9 +292,9 @@ const MyBlogs = ({ toggleSuccess }) => {
             Error: {error.message || error} Please Reload Or check back later!!
           </div>
         )}
-        {authorSpecificBlogs.length > 0 ? (
+        {sortedBlogs.length > 0 ? (
           <div className="flex flex-wrap -mx-4">
-            {authorSpecificBlogs.map((blog) => (
+            {sortedBlogs.map((blog) => (
               <div key={blog._id} className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
                               <article className="h-[432px] m-5 custom-scrollbar overflow-auto hover:animate-background hover:bg-[length:400%_400%] hover:[animation-duration:_4s] bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-[3px]  transitionbg-white shadow-lg rounded-lg  transform transition-transform hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/50">
                 <div className="relative p-6 ounded-[10px] bg-white !pt-20 sm:p-6 flex flex-col">
@@ -303,7 +305,8 @@ const MyBlogs = ({ toggleSuccess }) => {
                     dateTime={new Date(blog.createdAt).toISOString()}
                     className="absolute top-4 right-4 bg-indigo-500 text-white text-xs px-2 py-1 rounded"
                   >
-                    {new Date(blog.createdAt).toLocaleDateString()}
+                    {new Date(blog.createdAt).toLocaleDateString() + ' ' +  new Date(blog.createdAt).toTimeString().slice(0, 5)}
+
                   </time>
                   <div className="mt-6 flex items-center gap-x-4">
                       <div>
