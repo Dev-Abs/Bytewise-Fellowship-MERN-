@@ -12,6 +12,7 @@ import { fetchAuthorSpecificBlogs, updateBlog, setBlogId, deleteBlog} from "../f
 
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { set } from "mongoose";
 
 const DrawerForm = ({blogID, show, onClose, toggleSuccess }) => {
     const dispatch = useDispatch();
@@ -168,21 +169,77 @@ const MyBlogs = ({toggleSuccess}) => {
   );
   const user = useSelector((state) => state.user.value)
   const [blogID, setBlogID] = useState(null);
-
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [blogLikes, setBlogLikes] = useState([]);
+  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState({});
 
   useEffect(() => {
     dispatch(fetchAuthorSpecificBlogs());
     dispatch(getUser());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (authorSpecificBlogs.length === 0) return;
+    setBlogLikes(
+      authorSpecificBlogs.map((blog) => ({
+        blogId: blog._id,
+        likes: blog.likes,
+      }))
+    );
+
+    const initialComments = {};
+    authorSpecificBlogs.forEach((blog) => {
+      initialComments[blog._id] = blog.comments || [];
+    });
+    setComments(initialComments);
+
+  }, [authorSpecificBlogs]);
+
+
   const handleAddComment = (blogId, content) => {
     dispatch(addComment({ blogId, content }));
+    setComments((prevComments) => ({
+      ...prevComments,
+      [blogId]: [...prevComments[blogId], { userId: user._id, content }],
+    }));
+    setComment("");
+  };
+
+  const getComments = (blogId) => {
+    return comments[blogId] || [];
   };
 
   const handleLike = (blogId) => {
-    dispatch(likeBlog(blogId));
-    dispatch(likeBlogLocally(blogId));
+    const updatedBlogLikes = blogLikes.map((blog) => {
+      if (blog.blogId === blogId) {
+        const alreadyLiked = blog.likes.some((like) => like.userId === user._id);
+        if (alreadyLiked) {
+          return {
+            ...blog,
+            likes: blog.likes.filter((like) => like.userId !== user._id),
+          };
+        } else {
+          return {
+            ...blog,
+            likes: [...blog.likes, { userId: user._id }],
+          };
+        }
+      }
+      return blog;
+    });
+    setBlogLikes(updatedBlogLikes);
+    if (updatedBlogLikes.find((blog) => blog.blogId === blogId).likes.some((like) => like.userId === user._id)) {
+      dispatch(likeBlog(blogId));
+      dispatch(likeBlogLocally(blogId));
+    } else {
+      dispatch(unlikeBlog(blogId));
+    }
+  };
+
+  const getLikes = (blogId) => {
+    const blog = blogLikes.find((blog) => blog.blogId === blogId);
+    return blog ? blog.likes.length : 0;
   };
 
   const handleUnlike = (blogId) => {
@@ -279,7 +336,7 @@ const MyBlogs = ({toggleSuccess}) => {
                       onClick={() => handleLike(blog._id)}
                       className="flex items-center text-gray-600 hover:text-gray-900"
                     >
-                      <FaThumbsUp className="mr-1" /> {blog.likes.length}
+                      <FaThumbsUp className="mr-1" /> {getLikes(blog._id)}
                     </button>
                     <button
                       onClick={() => handleUnlike(blog._id)}
@@ -293,14 +350,14 @@ const MyBlogs = ({toggleSuccess}) => {
                       Comments
                     </h3>
                     <div className="mt-2 space-y-4">
-                      {blog.comments.map((comment) => (
-                        <p key={comment._id} className="text-sm text-gray-600">
-                          <span className="font-bold text-gray-600">
-                            {comment.name || "Unknown"} commented:
-                          </span>{" "}
-                          {comment.content}
-                        </p>
-                      ))}
+                    {getComments(blog._id).map((comment) => (
+                            <p key={comment._id} className="text-sm text-gray-600">
+                              <span className="font-bold text-gray-600">
+                                {comment.name || 'you commented'} commented:
+                              </span>{" "}
+                              {comment.content}
+                            </p>
+                          ))}
                     </div>
                     <input
                       type="text"
