@@ -109,6 +109,17 @@ const getUserProfile = asyncHandler( async (req, res) => {
 }
 )
 
+const getUserById = asyncHandler( async (req, res) => {
+    const user = await User.findById(req.params.id).select('-password')
+    if (user) {
+        res.json(user)
+    } else {
+        res.status(404)
+        throw new Error('User not found')
+    }
+}
+)
+
 // Generate JWT 
 const generateToken = (id) => {
     return jwt.sign({id}, process.env.JWT_SECRET, {
@@ -116,4 +127,4 @@ const generateToken = (id) => {
     })
 }
 
-module.exports = {registerUser, loginUser, getUserProfile}
+module.exports = {registerUser, loginUser, getUserProfile, getUserById}
