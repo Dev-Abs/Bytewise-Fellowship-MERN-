@@ -294,7 +294,7 @@ const MyBlogs = ({ toggleSuccess }) => {
           <div className="flex flex-wrap -mx-4">
             {authorSpecificBlogs.map((blog) => (
               <div key={blog._id} className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-              <article className="hover:animate-background hover:bg-[length:400%_400%] hover:[animation-duration:_4s] bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-[3px]  transitionbg-white shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/50">
+                              <article className="h-[432px] m-5 custom-scrollbar overflow-auto hover:animate-background hover:bg-[length:400%_400%] hover:[animation-duration:_4s] bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-[3px]  transitionbg-white shadow-lg rounded-lg  transform transition-transform hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/50">
                 <div className="relative p-6 ounded-[10px] bg-white !pt-20 sm:p-6 flex flex-col">
                   <span className="absolute top-4 left-4 bg-indigo-500 text-white text-xs font-semibold px-2 py-1 rounded">
                     {blog.categories || "Unknown Category"}

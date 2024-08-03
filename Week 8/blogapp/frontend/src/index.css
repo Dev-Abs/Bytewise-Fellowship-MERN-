@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add this to your CSS file */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  /* gradient backhround */
+    background: linear-gradient(
+        45deg,
+        rgba(6, 215, 82, 0.2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(184, 5, 5, 0.2) 50%,
+        rgba(52, 7, 159, 0.2) 75%,
+        transparent 75%,
+        transparent
+    );
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+
+    background: #f1f1f1;
+    border-radius: 10px;
+}

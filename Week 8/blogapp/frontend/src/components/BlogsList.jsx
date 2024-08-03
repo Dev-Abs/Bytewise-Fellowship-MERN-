@@ -122,8 +122,8 @@ const BlogsList = () => {
         {error && <div className="text-center text-red-600">Error: {error.message || error}</div>}
         <div className="flex flex-wrap -mx-4">
           {localBlogs.map((blog) => (
-            <div key={blog._id} className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-              <article className="hover:animate-background hover:bg-[length:400%_400%] hover:[animation-duration:_4s] bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-[3px]  transitionbg-white shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/50">
+            <div key={blog._id} className="w-full  md:w-1/2 lg:w-1/3 px-4 mb-8">
+              <article className="h-[432px] m-5 custom-scrollbar overflow-auto hover:animate-background hover:bg-[length:400%_400%] hover:[animation-duration:_4s] bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-[3px]  transitionbg-white shadow-lg rounded-lg  transform transition-transform hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/50">
                 <div className="relative p-6 rounded-[10px] bg-white !pt-20 sm:p-6 flex flex-col">
                   <span className="absolute top-4 left-4 bg-indigo-500 text-white text-xs font-semibold px-2 py-1 rounded">
                     {blog.categories || "Unknown Category"}
@@ -145,12 +145,6 @@ const BlogsList = () => {
                       className="flex items-center text-indigo-500 hover:text-indigo-700 transition-colors duration-300"
                     >
                       <FaThumbsUp className="mr-1" /> {getLikes(blog._id)}
-                    </button>
-                    <button
-                      onClick={() => handleUnlike(blog._id)}
-                      className="flex items-center text-red-500 hover:text-red-700 transition-colors duration-300"
-                    >
-                      <FaThumbsDown className="mr-1" />
                     </button>
                   </div>
                   <div className="mt-6">
@@ -175,9 +169,13 @@ const BlogsList = () => {
                         </div>
                       ))}
                     </div>
+                    <div className="flex justify-center items-center gap-2">
                     <input
                       type="text"
                       placeholder="Add a comment"
+                      onChange={(e) => 
+                        setComment(e.target.value)
+                      }
                       className="mt-4 w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors duration-300"
                       onKeyDown={(e) => {
                         if (e.key === "Enter") {
@@ -186,6 +184,13 @@ const BlogsList = () => {
                         }
                       }}
                     />
+                    <button
+                      onClick={() => handleAddComment(blog._id, comment)}
+                      className="bg-indigo-500 text-white px-4 mt-4 py-2 rounded hover:bg-indigo-600 transition-colors duration-300"
+                    >
+                      Add
+                    </button>
+                    </div>
                   </div>
                 </div>
               </article>
