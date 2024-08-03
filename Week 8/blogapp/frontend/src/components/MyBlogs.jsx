@@ -255,6 +255,21 @@ const MyBlogs = ({ toggleSuccess }) => {
   };
 
   const handleUnlike = (blogId) => {
+    const updatedBlogLikes = blogLikes.map((blog) => {
+      if (blog.blogId === blogId) {
+        const alreadyLiked = blog.likes.some(
+          (like) => like.userId === user._id
+        );
+        if (alreadyLiked) {
+          return {
+            ...blog,
+            likes: blog.likes.filter((like) => like.userId !== user._id),
+          };
+        }
+      }
+      return blog;
+    });
+    setBlogLikes(updatedBlogLikes);
     dispatch(unlikeBlog(blogId));
   };
 
@@ -272,6 +287,13 @@ const MyBlogs = ({ toggleSuccess }) => {
     dispatch(deleteBlog(blogId));
     toggleSuccess("Blog Deleted Successfully");
     navigate("/myblogs");
+  };
+  const handleLiked = (blogId) => {
+    const blogLike = blogLikes.find((blog) => blog.blogId === blogId);
+    if (blogLike) {
+      return blogLike.likes.some((like) => like.userId === user._id);
+    }
+    return false;
   };
 
   return (
@@ -336,6 +358,14 @@ const MyBlogs = ({ toggleSuccess }) => {
                     >
                       <FaThumbsUp className="mr-1" /> {getLikes(blog._id)}
                     </button>
+                    {handleLiked(blog._id) && ( 
+                      <button
+                        onClick={() => handleUnlike(blog._id)}
+                        className="flex items-center text-red-500 hover:text-red-700 transition-colors duration-300"
+                      >
+                        <FaThumbsDown className="mr-1" /> Unlike
+                      </button>
+                    )}
                     <div className="">
                     <span className="mt-0.5 mr-5 p-2 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-lg ">
                         By {blog.author !== null ? blog.author.name : "Unknown"}
