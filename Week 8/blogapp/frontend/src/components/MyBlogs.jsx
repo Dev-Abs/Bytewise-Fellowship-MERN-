@@ -336,7 +336,7 @@ const MyBlogs = ({ toggleSuccess }) => {
                     {new Date(blog.createdAt).toLocaleDateString() + ' ' +  new Date(blog.createdAt).toTimeString().slice(0, 5)}
 
                   </time>
-                  <div className="mt-6 flex items-center gap-x-4">
+                  <div className="mt-6 flex items-center gap-x-4 justify-between ">
                       <div>
                         <button
                           type="button"
@@ -352,12 +352,19 @@ const MyBlogs = ({ toggleSuccess }) => {
                         >
                           Delete
                         </button>
-
                       </div>
+                      {handleLiked(blog._id) && ( 
+                      <p
+                        className="flex items-center text-green-500 font-semibold text-xl"
+                      >
+                        Liked
+                      </p>
+                    )}
                     </div>
                   <h2 className="mt-8 text-2xl font-bold text-gray-800 hover:text-indigo-600 transition-colors duration-300">{blog.title}</h2>
                   <p className="mt-4 text-gray-600">{blog.body}</p>
                   <div className="mt-6 justify-between flex items-center gap-x-4">
+                    <div className="flex justify-center items-center gap-x-4">
                     <button
                       onClick={() => handleLike(blog._id)}
                       className="flex items-center text-indigo-500 hover:text-indigo-700 transition-colors duration-300"
@@ -372,6 +379,7 @@ const MyBlogs = ({ toggleSuccess }) => {
                         <FaThumbsDown className="mr-1" /> Unlike
                       </button>
                     )}
+                    </div>
                     <div className="">
                     <span className="mt-0.5 mr-5 p-2 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-lg ">
                         By {blog.author !== null ? blog.author.name : "Unknown"}

@@ -135,9 +135,18 @@ const BlogsList = () => {
                   <span className="absolute top-4 left-4 bg-indigo-500 text-white text-xs font-semibold px-2 py-1 rounded">
                     {blog.categories || "Unknown Category"}
                   </span>
+                  <div className="flex justify-between items-center ">
                     <span className="self-start p-2 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-lg ">
                         By {blog.author !== null ? blog.author.name : "Unknown"}
                       </span>
+                      {handleLiked(blog._id) && ( 
+                      <p
+                        className="flex items-center text-green-500 font-semibold text-xl"
+                      >
+                        Liked
+                      </p>
+                    )}
+                    </div>
                   <time
                     dateTime={new Date(blog.createdAt).toISOString()}
                     className="absolute top-4 right-4 bg-indigo-500 text-white text-xs px-2 py-1 rounded"
