@@ -288,7 +288,7 @@ const MyBlogs = ({ toggleSuccess }) => {
   const deleteBlogHandle = (blogId) => {
     dispatch(deleteBlog(blogId));
     toggleSuccess("Blog Deleted Successfully");
-    navigate("/myblogs");
+    window.location.reload();
   };
   const handleLiked = (blogId) => {
     const blogLike = blogLikes.find((blog) => blog.blogId === blogId);
@@ -355,7 +355,7 @@ const MyBlogs = ({ toggleSuccess }) => {
                       </div>
                       {handleLiked(blog._id) && ( 
                       <p
-                        className="flex items-center text-green-500 font-semibold text-xl"
+                        className="flex items-center text-green-500 font-semibold"
                       >
                         Liked
                       </p>
