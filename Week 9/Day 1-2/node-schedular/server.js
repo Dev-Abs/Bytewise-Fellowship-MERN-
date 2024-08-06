@@ -5,7 +5,8 @@ const app = express();
 dotenv.config();
 
 // require('./schedular');
-require('./schedular2');
+// require('./schedular2');
+require('./schedular3');
 
 app.use(express.json());
 
