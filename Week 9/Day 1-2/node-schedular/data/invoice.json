@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "status": "pending",
+        "amount": 1000,
+        "dueDate": "2021-09-01",
+        "createdAt": "2021-08-01",
+        "updatedAt": "2021-08-01",
+        "date": "2021-08-01",
+        "description": "laptop"
+    },
+    {
+        "id": 3,
+        "status": "pending",
+        "amount": 5000,
+        "dueDate": "2021-09-15",
+        "createdAt": "2021-08-15",
+        "updatedAt": "2021-08-15",
+        "date": "2021-08-15",
+        "description": "Mobile"
+    },
+    {
+        "id": 5,
+        "status": "pending",
+        "amount": 3000,
+        "dueDate": "2021-09-25",
+        "createdAt": "2021-08-25",
+        "updatedAt": "2021-08-25",
+        "date": "2021-08-25",
+        "description": "Headphone"
+    },
+    {
+        "id": 7,
+        "status": "pending",
+        "amount": 6000,
+        "dueDate": "2021-10-05",
+        "createdAt": "2021-09-05",
+        "updatedAt": "2021-09-05",
+        "date": "2021-09-05",
+        "description": "Speaker"
+    }
+]

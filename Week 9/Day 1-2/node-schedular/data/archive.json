@@ -1,0 +1,32 @@
+[
+    {
+        "id": 2,
+        "status": "paid",
+        "amount": 10000,
+        "dueDate": "2021-09-10",
+        "createdAt": "2021-08-25",
+        "updatedAt": "2021-08-10",
+        "date": "2021-08-08",
+        "description": "LED"
+    },
+    {
+        "id": 4,
+        "status": "paid",
+        "amount": 2000,
+        "dueDate": "2021-09-20",
+        "createdAt": "2021-08-20",
+        "updatedAt": "2021-08-20",
+        "date": "2021-08-20",
+        "description": "Tablet"
+    },
+    {
+        "id": 6,
+        "status": "paid",
+        "amount": 4000,
+        "dueDate": "2021-09-30",
+        "createdAt": "2021-08-30",
+        "updatedAt": "2021-08-30",
+        "date": "2021-08-30",
+        "description": "Earphone"
+    }
+]
