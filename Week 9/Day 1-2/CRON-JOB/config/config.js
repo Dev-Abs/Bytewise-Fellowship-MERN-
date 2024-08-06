@@ -1,6 +1,6 @@
 const config = {
     emailUser: 'abdullah@gmail.com',
-    emailPass: '123456',
+    emailPass: '212345678'
 };
 
 module.exports = config;
