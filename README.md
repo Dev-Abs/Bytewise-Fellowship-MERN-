@@ -37,6 +37,7 @@ The repository is structured to reflect my day-to-day progress. Each folder corr
 | React State Management | 7 | Day 5 | Completed | [Link to Task](./Week%207/Day%205/) |
 | Blog App Project | 8 | Day 1-5 | Completed | [Link to Task](./Week%208/blogapp/) |
 | Cron Jobs in React | 9 | Day 1-2 | Completed | [Link to Task](./Week%209/Day%201-2/) |
+| GraphQL | 10 | Day 1-2 | Completed | [Link to Task](./Week%2010/Day%201-2/) |
 
 ...
 
