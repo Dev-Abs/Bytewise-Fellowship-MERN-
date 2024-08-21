@@ -1,8 +1,15 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const cors = require('cors');
+app.use(cors(
+    {
+        origin: process.env.CLIENT_URL
+    }
+));
 app.use(express.json());
-app.use(express.static('public'));
+
+
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
@@ -37,6 +44,6 @@ app.post('/create-checkout-session', async (req, res) => {
         res.status(500).json({error: error.message});
     }
 });
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+app.listen(5000, () => {
+    console.log('Server is running on port 5000');
 });
